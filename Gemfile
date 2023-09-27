@@ -54,6 +54,15 @@ gem 'dotenv-rails'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "better_errors"      # エラー画面を見やすくする
+  gem "binding_of_caller"  # better_errorsと併記することで、ブラウザ上でirbを使える
+  gem 'pry-rails'          # コンソールでirbの代わりにpryを使われる
+  gem 'pry-doc'            # メソッドの詳細を表示できる
+  gem 'pry-byebug'         # デバッグを実施(Ruby 2.0以降で動作する)
+  gem 'pry-stack_explorer' # スタックをたどれる
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
