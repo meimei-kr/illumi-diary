@@ -11,6 +11,12 @@ module IllumiDiary
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.generators do |g|
+      g.skip_routes true      # ルーティングを追加しない
+      g.helper false          # ヘルパーを追加しない
+      g.test_framework false  # テストスクリプトを生成しない
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
