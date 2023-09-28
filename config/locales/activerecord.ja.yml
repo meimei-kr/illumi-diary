@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      diary: 日記
+      comment: コメント
+      clap: 拍手
+    attributes:
+      user:
+        name: ユーザーネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        avatar_image: アバター画像
+        character_image: キャラクター画像

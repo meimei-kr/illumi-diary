@@ -17,6 +17,12 @@ module IllumiDiary
       g.test_framework false  # テストスクリプトを生成しない
     end
 
+    # デフォルトの言語を日本語に変更
+    config.i18n.default_locale = :ja
+
+    # config/locales配下のフォルダも含めてja.ymlを参照できるように設定
+    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.yml").to_s]
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

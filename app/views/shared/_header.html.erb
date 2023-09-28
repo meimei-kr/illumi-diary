@@ -27,16 +27,16 @@
       </button>
       <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
         <li class="flex-none ml-1.5">
-          <%= link_to 'みんなの日記', '#', class: 'cursor-pointer' %>
+          <%= link_to t('header.diaries'), '#', class: 'cursor-pointer' %>
         </li>
         <li class="flex-none ml-1.5">
-          <%= link_to '日記作成', '#', class: 'cursor-pointer' %>
+          <%= link_to t('header.new_diary'), '#', class: 'cursor-pointer' %>
         </li>
         <li class="flex-none ml-1.5">
-          <%= link_to 'My日記', '#', class: 'cursor-pointer' %>
+          <%= link_to t('header.my_diaries'), '#', class: 'cursor-pointer' %>
         </li>
         <li class="flex-none ml-1.5">
-          <%= link_to 'ログアウト', '#', data: { turbo_method: :delete }, class: 'cursor-pointer' %>
+          <%= link_to t('header.logout'), '#', data: { turbo_method: :delete }, class: 'cursor-pointer' %>
         </li>
       </ul>
     </div>
