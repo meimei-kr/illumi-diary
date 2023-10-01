@@ -1,3 +1,4 @@
+<%= content_for(:title) %>
 <section class="bg-pale-beige h-[calc(100vh_-_64px)] flex justify-end relative">
   <%= image_tag 'top.png', class: "w-2/3 h-full object-contain" %>
   <div class="absolute top-40 left-20 text-terracotta p-10">
@@ -17,15 +18,15 @@
         <%= image_tag 'pencil.png', class: 'w-16 mr-1 mb-1' %>
         <h1 class="text-3xl font-semibold mb-4 inline-block">ポジティブ<span class="text-2xl">なできごとを</span>3<span class="text-2xl">つ書こう</span></h1>
       </div>
-      <p class="text-normal mb-8 leading-loose">
+      <p class="text-normal mb-10 ml-20 leading-loose">
         「いい1日だったね！」と想いを込めながら、<br />
         日記にたくさんClap<i class="fa-solid fa-hands-clapping mx-1"></i>ボタンを押しましょう。<br />
         きっとポジティブな感情が増幅されるはずです…！<br />
         書いた日記は公開設定やコメント受付可否を選択できます。<br />
       </p>
       <div class="flex justify-end">
-        <%= link_to "ログイン", "#", class: "btn primary-button mr-2" %>
-        <%= link_to "みんなの日記を見てみる", "#", class: "btn secondary-button" %>
+        <%= link_to "ログイン", "#", class: "btn secondary-button mr-2" %>
+        <%= link_to "みんなの日記を見てみる", "#", class: "btn secondary-reverse-button" %>
       </div>
     </div>
   </div>
