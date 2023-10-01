@@ -8,3 +8,9 @@ ja:
     contact: お問い合わせ
     terms: 利用規約
     privacy: プライバシーポリシー
+  user_sessions:
+    new:
+      title: ログイン
+  users:
+    new:
+      title: 新規登録
