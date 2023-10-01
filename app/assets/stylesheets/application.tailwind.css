@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.primary-button {
+  color: #fff;
+  background-color: #b53663;
+}
+
+.primary-button:hover {
+  color: #b53663;
+  background: none;
+  border: 1px solid #b53663;
+}
+
+.secondary-button {
+  color: #b53663;
+  background: none;
+  border: 1px solid #b53663;
+}
+
+.secondary-button:hover {
+  background-color: #b53663;
+  color: #fff;
+}

@@ -11,6 +11,11 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        top: ['Caveat', 'sans-serif'],
+      },
+      colors: {
+        'pale-beige': '#f0e2d2',
+        'terracotta': '#e07951',
       },
     },
   },
