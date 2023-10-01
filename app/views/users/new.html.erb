@@ -1,0 +1,63 @@
+<div class="flex flex-col grow items-center justify-center w-full h-full bg-pale-beige">
+  <div class="w-full max-w-md">
+    <h1 class="text-2xl mb-4 text-center">新規登録</h1>
+
+    <%= form_with(model: @user, class: 'space-y-4') do |form| %>
+      <%= render 'shared/error_message', object: form.object %>
+
+      <div class="flex flex-col">
+        <%= form.label :name, class: "mb-2 ml-1" %>
+        <%= form.text_field :name, class: 'p-2 border rounded input input-bordered w-full max-w-x' %>
+      </div>
+
+      <div class="flex flex-col">
+        <%= form.label :email, class: "mb-2 ml-1" %>
+        <%= form.text_field :email, class: 'p-2 border rounded input input-bordered w-full max-w-x' %>
+      </div>
+
+      <div class="flex flex-col">
+        <%= form.label :password, class: "mb-2 ml-1" %>
+        <%= form.password_field :password, class: 'p-2 border rounded input input-bordered w-full max-w-x', placeholder: '8文字以上で入力' %>
+      </div>
+
+      <div class="flex flex-col">
+        <%= form.label :password_confirmation, class: "mb-2 ml-1" %>
+        <%= form.password_field :password_confirmation, class: 'p-2 border rounded input input-bordered w-full max-w-x', placeholder: '確認のためにもう一度入力'%>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div class="flex flex-col inline">
+          <div>
+            <%= form.label :avatar_image, class: "mb-2 ml-1" %><span>（任意）</span>
+          </div>
+          <%= form.file_field :avatar_image, accept: 'image/*', class: 'file-input file-input-bordered w-full max-w-xs' %>
+          <%= form.hidden_field :avatar_image_cache %>
+        </div>
+        <div class="inline">
+          <%= image_tag @user.avatar_image_url, class: 'rounded-full mt-2', width: '100', height: '100', id: 'preview'  %>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div class="flex flex-col inline">
+          <div>
+            <%= form.label :character_image, class: "mb-2 ml-1" %><span>（任意）</span>
+          </div>
+          <%= form.file_field :character_image, accept: 'image/*', class: 'file-input file-input-bordered w-full max-w-xs' %>
+          <%= form.hidden_field :character_image_cache %>
+        </div>
+        <div class="inline">
+          <%= image_tag @user.character_image_url, class: 'rounded-full mt-2', width: '100', height: '100', id: 'preview'  %>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <%= form.submit '登録', class: "primary-button p-2 mt-10 rounded-full text-center" %>
+      </div>
+    <% end %>
+
+    <div class="my-10 text-sm">
+      <%= link_to "ログイン画面に戻る", login_path, class: 'link text-terracotta' %>
+    </div>
+  </div>
+</div>

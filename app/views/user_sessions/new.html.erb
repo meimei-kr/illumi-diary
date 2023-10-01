@@ -5,22 +5,22 @@
     <h1 class="text-2xl mb-4 text-center">ログイン</h1>
     <%= form_with url: login_path, class: 'space-y-4' do |f| %>
       <div class="flex flex-col">
-        <%= f.label :email, class: 'mb-2' %>
+        <%= f.label :email, class: 'mb-2 ml-1' %>
         <%= f.text_field :email, class: 'p-2 border rounded input input-bordered w-full max-w-x' %>
       </div>
       <div class="flex flex-col">
-        <%= f.label :password, class: 'mb-2s' %>
+        <%= f.label :password, class: 'mb-2 ml-1' %>
         <%= f.password_field :password, class: 'p-2 border rounded input input-bordered w-full max-w-x' %>
       </div>
-      <p class="text-sm">パスワードをお忘れの方は、<%= link_to 'こちら', '#', class: 'text-terracotta link link-hover' %></p>
+      <p class="text-sm ml-1">パスワードをお忘れの方は、<%= link_to 'こちら', '#', class: 'text-terracotta link link-hover' %></p>
       <div class="flex flex-col">
         <%= f.submit 'ログイン', class: 'primary-button mt-4 p-2 rounded-full' %>
       </div>
     <% end %>
 
-    <h2 class="text-xl mt-10">はじめてご利用の方</h2>
+    <h2 class="text-xl mt-10 ml-1">はじめてご利用の方</h2>
     <div class="flex flex-col">
-      <%= link_to '新規登録', '#', class: "primary-button mt-4 p-2 rounded-full text-center" %>
+      <%= link_to '新規登録', new_user_path, class: "primary-button mt-4 p-2 rounded-full text-center" %>
     </div>
   </div>
 </div>
