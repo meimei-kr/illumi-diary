@@ -16,6 +16,7 @@ module.exports = {
       colors: {
         'pale-beige': '#f0e2d2',
         'terracotta': '#e07951',
+        'orange': '#e16433'
       },
     },
   },

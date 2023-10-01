@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>IllumiDiary</title>
+    <title><%= page_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -16,8 +16,12 @@
   </head>
 
   <body class="min-h-screen flex flex-col text-gray-600">
-    <%= render "shared/header" %>
-    <main class="grow mb-20">
+    <% if logged_in? %>
+      <%= render "shared/header" %>
+    <% else %>
+      <%= render 'shared/header_before_login' %>
+    <% end %>
+    <main class="flex flex-col grow">
       <%= yield %>
     </main>
     <%= render 'shared/footer' %>

@@ -4,22 +4,43 @@
 
 .primary-button {
   color: #fff;
-  background-color: #b53663;
+  background-color: #e16433;
 }
 
 .primary-button:hover {
-  color: #b53663;
-  background: none;
-  border: 1px solid #b53663;
+  background-color: #e87649;
+  cursor: pointer;
 }
 
 .secondary-button {
-  color: #b53663;
-  background: none;
-  border: 1px solid #b53663;
+  color: #fff;
+  background-color: #e16433;
 }
 
 .secondary-button:hover {
-  background-color: #b53663;
+  color: #e16433;
+  background: none;
+  border: 1px solid #e16433;
+}
+
+.secondary-reverse-button {
+  color: #e16433;
+  background: none;
+  border: 1px solid #e16433;
+}
+
+.secondary-reverse-button:hover {
+  background-color: #e16433;
   color: #fff;
+}
+
+.header-button {
+  color: #fff;
+  background-color: #b53663;
+}
+
+.header-button:hover {
+  color: #b53663;
+  background: none;
+  border: 1px solid #b53663;
 }
