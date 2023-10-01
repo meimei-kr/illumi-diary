@@ -1,1 +1,32 @@
-TOP
+<section class="bg-pale-beige h-[calc(100vh_-_64px)] flex justify-end relative">
+  <%= image_tag 'top.png', class: "w-2/3 h-full object-contain" %>
+  <div class="absolute top-40 left-20 text-terracotta p-10">
+    <p class="text-xl tracking-widest opacity-70">1日のおわりに、今日あった</p>
+    <p class="text-xl tracking-widest opacity-70 mb-4">嬉しかったこと、楽しかったこと、頑張ったこと をふりかえりましょう</p>
+    <p class="text-base tracking-wide opacity-60 font-top">Find happiness in your life</p>
+  </div>
+</section>
+
+<section class="h-screen px-14 flex items-center justify-center bg-white">
+  <div class="flex items-center w-full">
+    <div class="w-1/2">
+      <%= image_tag "posts-image.png", class: "w-full h-auto" %>
+    </div>
+    <div class="w-1/2 pl-10">
+      <div class="flex items-center">
+        <%= image_tag 'pencil.png', class: 'w-16 mr-1 mb-1' %>
+        <h1 class="text-3xl font-semibold mb-4 inline-block">ポジティブ<span class="text-2xl">なできごとを</span>3<span class="text-2xl">つ書こう</span></h1>
+      </div>
+      <p class="text-normal mb-8 leading-loose">
+        「いい1日だったね！」と想いを込めながら、<br />
+        日記にたくさんClap<i class="fa-solid fa-hands-clapping mx-1"></i>ボタンを押しましょう。<br />
+        きっとポジティブな感情が増幅されるはずです…！<br />
+        書いた日記は公開設定やコメント受付可否を選択できます。<br />
+      </p>
+      <div class="flex justify-end">
+        <%= link_to "ログイン", "#", class: "btn primary-button mr-2" %>
+        <%= link_to "みんなの日記を見てみる", "#", class: "btn secondary-button" %>
+      </div>
+    </div>
+  </div>
+</section>
