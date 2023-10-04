@@ -1,0 +1,8 @@
+<% if @clap.count < 10 %>
+  <%= turbo_stream.update "claps-count-#{@diary.id}", @diary.claps_count %>
+<% else %>
+  <%= turbo_stream.update "claps-count-#{@diary.id}", @diary.claps_count %>
+  <%= turbo_stream.replace "clap-#{@diary.id}" do %>
+    <% render 'diaries/max_claps' %>
+  <% end %>
+<% end %>
