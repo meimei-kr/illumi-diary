@@ -14,3 +14,12 @@ ja:
   users:
     new:
       title: 新規登録
+  diaries:
+    index:
+      title: みんなの日記
+    new:
+      title: 日記作成
+    show:
+      title: 日記詳細
+    edit:
+      title: 日記編集

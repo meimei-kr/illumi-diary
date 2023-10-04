@@ -55,4 +55,4 @@ https://amzn.asia/d/eBYhRRV
 https://www.figma.com/file/vnFmI6GyJesUINESwwIhaS/illumi-diary?type=design&node-id=0%3A1&mode=design&t=oU6hVh25i7wW8SYI-1
 
 ### ER図
-[![Image from Gyazo](https://i.gyazo.com/eb5cb956205791b878c67d66c91988f5.png)](https://gyazo.com/eb5cb956205791b878c67d66c91988f5)
+[![Image from Gyazo](https://i.gyazo.com/b08eea75cf01b235c3ca028b148fa913.png)](https://gyazo.com/b08eea75cf01b235c3ca028b148fa913)

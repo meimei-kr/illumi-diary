@@ -1,0 +1,36 @@
+<%= content_for(:title, t('.title')) %>
+<div class="flex flex-col grow bg-pale-beige w-full h-full justify-stretch">
+  <div class="flex flex-row justify-center">
+    <h1 class="text-2xl mt-10 text-center inline tracking-wider">みんなの日記</h1>
+    <%= image_tag 'diary.png', class: 'h-24 w-24 bg-cover' %>
+  </div>
+
+  <div class="container mx-auto my-2">
+    <div class="jscroll">
+      <% if @diaries.present? %>
+        <%= render @diaries %>
+      <% else %>
+        <div class="px-8 py-24 w-full bg-white rounded-lg flex flex-col items-center">
+          <p class="text-center">
+            まだ日記がありません。<br />
+            さっそく今日の日記を書いてみましょう！
+          </p>
+          <%= image_tag 'pomeranian.png', class: 'h-40 w-40' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= paginate @diaries %>
+
+  <div class="flex justify-center items-center mb-20">
+    <div class="flex flex-row justify-center items-center mt-4 p-2 primary-button rounded-full w-48">
+      <%= link_to new_diary_path, class: 'h-full w-full flex justify-center items-center' do %>
+        <span class="text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="white" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+        </span>
+        <span class="ml-2">日記作成</span>
+      <% end %>
+    </div>
+  </div>
+</div>
