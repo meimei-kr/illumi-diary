@@ -13,3 +13,9 @@ ja:
         password_confirmation: パスワード（確認用）
         avatar_image: アバター画像
         character_image: キャラクター画像
+      diary:
+        content1: 日記1
+        content2: 日記2
+        content3: 日記3
+        allow_comments: コメント許可
+        allow_publication: 公開許可
