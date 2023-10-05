@@ -52,7 +52,8 @@ class DiariesController < ApplicationController
 
   # GET /diaries/my_diaries
   def my_diaries
-    @diaries = current_user.diaries.order(created_at: :desc)
+    @q = current_user.diaries.ransack(params[:q])
+    @diaries = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   private

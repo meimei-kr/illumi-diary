@@ -64,8 +64,8 @@ gem 'carrierwave', '~> 3.0'
 # Pagination
 gem 'kaminari'
 
-# jQuery
-gem 'jquery-rails'
+# Search
+gem 'ransack'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
