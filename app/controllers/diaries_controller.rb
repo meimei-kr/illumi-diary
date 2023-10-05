@@ -22,10 +22,10 @@ class DiariesController < ApplicationController
 
   # POST /diaries
   def create
-    @diary = Diary.new(diary_params)
+    @diary = current_user.diaries.build(diary_params)
 
     if @diary.save
-      redirect_to @diary, notice: "Diary was successfully created."
+      redirect_to complete_diary_path(@diary)
     else
       render :new, status: :unprocessable_entity
     end
@@ -64,6 +64,6 @@ class DiariesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def diary_params
-      params.require(:diary).permit(:content1, :content2, :content3, :user_id, :allow_publication, :allow_comments)
+      params.require(:diary).permit(:content1, :content2, :content3, :allow_publication, :allow_comments)
     end
 end

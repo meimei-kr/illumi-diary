@@ -1,15 +1,5 @@
 <%= form_with(model: diary, class: "contents") do |form| %>
-  <% if diary.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(diary.errors.count, "error") %> prohibited this diary from being saved:</h2>
-
-      <ul>
-        <% diary.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_message', object: form.object %>
 
   <div class="my-5">
     <%= form.label :content1 %>
@@ -26,22 +16,19 @@
     <%= form.text_area :content3, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="flex flex-row">
+    <div class="label cursor-pointer inline-flex mr-4 my-5">
+      <%= form.label :allow_publication, class: 'label-text mr-1' %>
+      <%= form.check_box :allow_publication, class: "checkbox" %>
+    </div>
+
+    <div class="label cursor-pointer inline-flex my-5">
+      <%= form.label :allow_comments, class: 'label-text mr-1' %>
+      <%= form.check_box :allow_comments, class: "checkbox" %>
+    </div>
   </div>
 
-  <div class="my-5">
-    <%= form.label :allow_publication %>
-    <%= form.check_box :allow_publication, class: "block mt-2 h-5 w-5" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :allow_comments %>
-    <%= form.check_box :allow_comments, class: "block mt-2 h-5 w-5" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="flex justify-center">
+    <%= form.submit class: "primary-button w-48 rounded-full py-3 px-5 inline-block" %>
   </div>
 <% end %>
