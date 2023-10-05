@@ -49,7 +49,7 @@
             <% else %>
               <%= render 'max_claps', diary: diary %>
             <% end %>
-            <span id="claps-count-<%= diary.id %>" class="ml-2"><%= diary.claps_count %></span>
+            <span id="claps-count-<%= diary.id %>" class="ml-2"><%= diary.count_all_claps %></span>
           </span>
           <% if diary.allow_comments %>
             <span class="text-gray-500 inline-flex items-center leading-none text-sm ml-3">

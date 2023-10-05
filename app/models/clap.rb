@@ -1,4 +1,4 @@
 class Clap < ApplicationRecord
   belongs_to :user
-  belongs_to :diary, counter_cache: true
+  belongs_to :diary
 end
