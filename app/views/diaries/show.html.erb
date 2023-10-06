@@ -1,15 +1,16 @@
+<%= content_for(:title, t('.title')) %>
 <div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-
-    <%= render @diary %>
-
-    <%= link_to 'Edit this diary', edit_diary_path(@diary), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this diary', diary_path(@diary), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
-    <%= link_to 'Back to diaries', diaries_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <div class="flex flex-row justify-center">
+    <h1 class="text-2xl mt-10 text-center inline tracking-wider">日記詳細</h1>
+    <%= image_tag 'diary.png', class: 'h-24 w-24 bg-cover' %>
   </div>
+
+  <%= render @diary %>
+
+  <%= link_to 'Edit this diary', edit_diary_path(@diary), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <div class="inline-block ml-2">
+    <%= button_to 'Destroy this diary', diary_path(@diary), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+  </div>
+  <%= link_to 'Back to diaries', diaries_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
 </div>

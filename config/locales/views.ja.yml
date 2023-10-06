@@ -1,4 +1,9 @@
 ja:
+  helpers:
+    submit:
+      create: 作成する
+      update: 更新する
+      destroy: 削除する
   header:
     diaries: みんなの日記
     new_diary: 日記作成
@@ -8,6 +13,11 @@ ja:
     contact: お問い合わせ
     terms: 利用規約
     privacy: プライバシーポリシー
+  flash_message:
+    update: "%{item}を更新しました"
+    destroy: "%{item}を削除しました"
+    login: ログインしました
+    logout: ログアウトしました
   user_sessions:
     new:
       title: ログイン
@@ -25,3 +35,5 @@ ja:
       title: 日記編集
     my_diaries:
       title: My日記
+    complete:
+      title: 日記作成完了

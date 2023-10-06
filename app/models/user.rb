@@ -20,4 +20,20 @@ class User < ApplicationRecord
   def own?(object)
     id == object.user_id
   end
+
+  # 当日含めて連続で日記を書いている日数を返す
+  def continuous_writing_days
+    days = 0
+    (Time.zone.today - 99 .. Time.zone.today).reverse_each do |date|
+      start_of_day = date.beginning_of_day
+      end_of_day = date.end_of_day
+      diaries_of_today = self.diaries.where(created_at: start_of_day..end_of_day)
+      if diaries_of_today.present?
+        days += 1
+      else
+        break
+      end
+    end
+    days
+  end
 end

@@ -1,5 +1,9 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing diary</h1>
+<%= content_for(:title, t('.title')) %>
+<div class="flex flex-col grow bg-pale-beige items-center justify-center w-full h-full">
+  <div class="flex flex-row justify-center">
+    <h1 class="text-2xl mt-10 text-center inline tracking-wider">日記編集</h1>
+    <%= image_tag 'diary.png', class: 'h-24 w-24 bg-cover' %>
+  </div>
 
   <%= render "form", diary: @diary %>
 
