@@ -43,7 +43,7 @@ class DiariesController < ApplicationController
 
   # DELETE /diaries/1
   def destroy
-    @diary.destroy
+    @diary.destroy!
     redirect_to diaries_url, notice: "Diary was successfully destroyed.", status: :see_other
   end
 
