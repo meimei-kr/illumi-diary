@@ -1,13 +1,22 @@
-<div class="flex flex-col grow bg-pale-beige items-center justify-center w-full h-full">
+<%= content_for(:title, t('.title')) %>
+<div class="flex flex-col grow bg-pale-beige items-center justify-center w-full h-full" id="confetti">
   <div class="flex flex-row justify-center">
     <h1 class="text-2xl mt-10 text-center inline tracking-wider">日記作成完了！</h1>
     <%= image_tag 'diary.png', class: 'h-24 object-cover' %>
   </div>
-  <div>
-    <p></p>
+  <div class="flex flex-row justify-center my-4">
+    <% medal = current_user.decorate.medal_to_give %>
+    <% if medal.nil? %>
+      <p><%= @diary.decorate.random_message %></p>
+    <% else %>
+      <p>
+        すごすぎる！！！<%= current_user.decorate.medal_to_give %><br >
+        ヘッダーにメダルが表示されているので、確認してみてね！
+      </p>
+    <% end %>
   </div>
-  <%= image_tag current_user.character_image_url, class: 'rounded-xl w-96 h-96 bg-cover' %>
-  <div class="flex justify-center my-8">
+  <%= image_tag current_user.character_image_url, class: 'rounded-xl object-cover' %>
+  <div class="flex justify-center mt-8 mb-16">
     <div class="lex flex-row justify-center items-center p-2 primary-button rounded-full w-48">
       <%= link_to diary_path(@diary), class: 'h-full w-full flex justify-center items-center' do %>
         <span class="mr-2">Let's clap</span>

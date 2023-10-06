@@ -273,6 +273,11 @@ caniuse-lite@^1.0.30001538, caniuse-lite@^1.0.30001541:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001543.tgz#478a3e9dddbb353c5ab214b0ecb0dbed529ed1d8"
   integrity sha512-qxdO8KPWPQ+Zk6bvNpPeQIOH47qZSYdFZd6dXQzb2KzhnSXju4Kd7H1PkSJx6NICSMgo/IhRZRhhfPTHYpJUCA==
 
+canvas-confetti@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/canvas-confetti/-/canvas-confetti-1.8.0.tgz#d8697b5b7e81f6662e3bbe28debcea6663990e83"
+  integrity sha512-hR2b5nGhHoqxKUufuM0CM1KRT7H7tq3ni6xIjR9mX4ilgmheX3HOgkK1yZI1DzX7yJdmXZ4KGMZUlvfxVmu7+w==
+
 chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"

@@ -1,10 +1,13 @@
-import $ from 'jquery'
+import jquery from "jquery"
+window.$ = window.jQuery = jquery
 
-$(function() {
-  $('.jscroll').jscroll({
-    contentSelector: '.jscroll',
-    nextSelector: '.next a',
-    loadingHtml: '読み込み中',
-    padding: 10,
+$(document).on('turbo:load', function() {
+  $(function() {
+    $('.jscroll').jscroll({
+      contentSelector: '.jscroll',
+      nextSelector: '.next a',
+      loadingHtml: '読み込み中',
+      padding: 10,
+    });
   });
 });

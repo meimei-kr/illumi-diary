@@ -1,7 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+consecutive_days_array = [6, 29, 99]
+
+consecutive_days_array.each do |consecutive_days|
+  user = User.create!(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: "password",
+    password_confirmation: "password"
+  )
+
+  consecutive_days.times do |m|
+    user.diaries.create!(
+      content1: Faker::Lorem.sentences(number: 1),
+      content2: Faker::Lorem.sentences(number: 1),
+      content3: Faker::Lorem.sentences(number: 1),
+      allow_publication: true,
+      allow_comments: true,
+      created_at: Time.zone.today - (m + 1).days
+    )
+  end
+end

@@ -6,7 +6,7 @@
   </div>
 
   <div class="container mx-auto mt-2 mb-24">
-    <div class="flex justify-end items-center my-6 mx-auto">
+    <div class="flex justify-end items-center mb-6 mx-auto">
       <div class="flex flex-row justify-center items-center p-2 primary-button rounded-full w-48">
         <%= link_to new_diary_path, class: 'h-full w-full flex justify-center items-center' do %>
           <span class="text-white">
@@ -16,32 +16,32 @@
         <% end %>
       </div>
     </div>
-    <div class="jscroll">
-    <%= search_form_for @q, url: my_diaries_diaries_path do |f| %>
-      <div class="flex flex-row justify-center items-center mb-4">
-        <div>
-          <%= f.date_field :created_at_gteq, class: 'p-2 border rounded input input-bordered', value: Date.today %>
-          <span>〜</span>
-          <%= f.date_field :created_at_lteq_end_of_day, class: 'p-2 border rounded input input-bordered', value: Date.today %>
-        </div>
-        <div>
-          <%= f.submit class: 'ml-2 px-4 py-2 rounded-lg secondary-reverse-button btn cursor-pointer' %>
-        </div>
-      </div>
-    <% end %>
-    <div class="jscroll">
-      <% if @diaries.present? %>
-        <%= render @diaries %>
-      <% else %>
-        <div class="px-8 py-24 w-full bg-white rounded-lg flex flex-col items-center">
-          <p class="text-center">
-            日記がありません。<br />
-            さっそく今日の日記を書いてみましょう！
-          </p>
-          <%= image_tag 'pomeranian.png', class: 'h-40 w-40' %>
+    <div>
+      <%= search_form_for @q, url: my_diaries_diaries_path do |f| %>
+        <div class="flex flex-row justify-center items-center mb-4">
+          <div>
+            <%= f.date_field :created_at_gteq, class: 'p-2 border rounded input input-bordered', value: Date.today %>
+            <span>〜</span>
+            <%= f.date_field :created_at_lteq_end_of_day, class: 'p-2 border rounded input input-bordered', value: Date.today %>
+          </div>
+          <div>
+            <%= f.submit class: 'ml-2 px-4 py-2 rounded-lg secondary-reverse-button btn cursor-pointer' %>
+          </div>
         </div>
       <% end %>
-    </div>
-    <%= paginate @diaries %>
+      <div class="jscroll">
+        <% if @diaries.present? %>
+          <%= render @diaries %>
+        <% else %>
+          <div class="px-8 py-24 w-full bg-white rounded-lg flex flex-col items-center">
+            <p class="text-center">
+              日記がありません。<br />
+              さっそく今日の日記を書いてみましょう！
+            </p>
+            <%= image_tag 'pomeranian.png', class: 'h-40 w-40' %>
+          </div>
+        <% end %>
+        <%= paginate @diaries %>
+      </div>
   </div>
 </div>

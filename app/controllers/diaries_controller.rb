@@ -25,6 +25,7 @@ class DiariesController < ApplicationController
     @diary = current_user.diaries.build(diary_params)
 
     if @diary.save
+      session[:diary_created] = true
       redirect_to complete_diary_path(@diary)
     else
       render :new, status: :unprocessable_entity
@@ -48,6 +49,9 @@ class DiariesController < ApplicationController
 
   # GET /diaries/1/complete
   def complete
+    unless session.delete(:diary_created)
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 
   # GET /diaries/my_diaries

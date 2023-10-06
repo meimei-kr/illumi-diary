@@ -7,14 +7,15 @@
     </div>
 
     <div class="flex items-center h-16">
-      <%#
-        <div class="flex-none ml-2.5">
-          <i class="fa-solid fa-medal"></i>
+      <% color = current_user.decorate.medal_color %>
+      <% unless color.nil? %>
+        <div class="flex-none">
+          <i class="fa-solid fa-medal fa-xl" style="color: <%= color %>"></i>
         </div>
-      %>
+      <% end %>
       <div class="flex flex-1 ml-2.5 avatar">
         <div class='w-10'>
-          <%= image_tag current_user.avatar_image_url, class:'rounded-full border border-zinc-200' %>
+          <%= image_tag current_user.avatar_image.avatar.url, class:'rounded-full border border-zinc-200' %>
         </div>
         <p class="ml-1 leading-10 h-10 truncate max-w-xs text-sm"><%= current_user.name %></p>
       </div>
