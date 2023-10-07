@@ -1,2 +1,3 @@
 import "@hotwired/turbo-rails"
-import './confetti'
+import "./controllers"
+import './confetti.js'

@@ -14,6 +14,8 @@ ja:
     terms: 利用規約
     privacy: プライバシーポリシー
   flash_message:
+    created: "%{item}を作成しました"
+    not_created: "%{item}の作成に失敗しました"
     update: "%{item}を更新しました"
     destroy: "%{item}を削除しました"
     login: ログインしました

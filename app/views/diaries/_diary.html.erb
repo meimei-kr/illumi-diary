@@ -5,9 +5,9 @@
   </div>
 
   <div class="flex-grow pl-6">
-    <div class="flex justify-between items-center mb-3">
-      <div class="inline-flex items-center mb-3 flex-grow">
-        <%= image_tag diary.user.avatar_image.url, class: 'w-8 h-8 rounded-full flex-shrink-0 object-cover object-center' %>
+    <div class="flex justify-between items-center mb-4">
+      <div class="inline-flex items-center flex-grow">
+        <%= image_tag diary.user.avatar_image.url, class: 'w-10 h-10 rounded-full flex-shrink-0 object-cover object-center border border-zinc-200' %>
         <span class="flex-grow flex flex-col pl-3">
           <span class="title-font font-medium"><%= diary.user.name %></span>
         </span>
@@ -17,7 +17,7 @@
     </div>
 
     <div>
-      <%= link_to diary_path(diary) do %>
+      <%= link_to diary_path(diary), data: { turbo: false } do %>
         <div class="leading-relaxed mb-5 overflow-hidden break-all">
           <strong class="mr-2">1.</strong>
           <%= diary.content1 %>
@@ -36,8 +36,8 @@
     <div class="flex flex-row items-center">
       <% if current_user&.own?(diary) %>
         <div class="inline-block flex-1">
-          <%= link_to "編集", edit_diary_path(diary), class: 'text-xs link link-hover text-terracotta' %>
-          <%= link_to "削除", diary, data: { turbo_method: :delete, turbo_confirm: '削除してもよろしいですか？' }, class: 'text-xs link link-hover text-terracotta ml-2'  %>
+          <%= link_to "編集", edit_diary_path(diary), class: 'text-xs link link-hover text-terracotta', data: { turbo: false } %>
+          <%= link_to "削除", diary_path(diary), data: { turbo_method: :delete, turbo_confirm: '削除してもよろしいですか？' }, class: 'text-xs link link-hover text-terracotta ml-2'  %>
         </div>
       <% end %>
 

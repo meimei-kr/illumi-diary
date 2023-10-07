@@ -1,0 +1,12 @@
+<%= form_with model: comment, url: diary_comments_path(diary), class: 'mt-16' do |f| %>
+  <%= render 'shared/error_message', object: f.object %>
+  <div class="my-5 flex justify-center">
+    <div class="w-2/3">
+      <%= f.label :content %>
+      <%= f.text_area :content, rows: '4', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", placeholder: '140文字以内で入力してください' %>
+    </div>
+  </div>
+  <div class="flex justify-center">
+    <%= f.submit class: "primary-button w-48 rounded-full py-3 px-5 inline-block" %>
+  </div>
+<% end %>
