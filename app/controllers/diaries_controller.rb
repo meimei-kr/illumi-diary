@@ -46,7 +46,7 @@ class DiariesController < ApplicationController
   # DELETE /diaries/1
   def destroy
     @diary.destroy!
-    redirect_to diaries_url, success: t('flash_message.deleted', item: Diary.model_name.human), status: :see_other
+    redirect_to diaries_url, success: t('flash_message.destroyed', item: Diary.model_name.human), status: :see_other
   end
 
   # GET /diaries/1/complete
@@ -65,7 +65,7 @@ class DiariesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_diary
-      @diary = Diary.find(params[:id])
+      @diary = current_user.diaries.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

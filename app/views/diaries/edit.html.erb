@@ -1,12 +1,17 @@
 <%= content_for(:title, t('.title')) %>
 <div class="flex flex-col grow bg-pale-beige items-center justify-center w-full h-full">
+  <%= render 'shared/flash_message' %>
   <div class="flex flex-row justify-center">
     <h1 class="text-2xl mt-10 text-center inline tracking-wider">日記編集</h1>
     <%= image_tag 'diary.png', class: 'h-24 w-24 bg-cover' %>
   </div>
 
-  <%= render "form", diary: @diary %>
-
-  <%= link_to "Show this diary", @diary, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to diaries", diaries_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <div class="container mx-auto mt-2 mb-24">
+    <%= render "form", diary: @diary %>
+    <div class="flex flex-row justify-end mt-24 w-full">
+      <div>
+        <%= link_to "この日記の詳細ページへ", @diary, class: "text-terracotta link link-hover" %>
+      </div>
+    </div>
+  </div>
 </div>
