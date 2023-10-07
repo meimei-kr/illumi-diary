@@ -1,0 +1,23 @@
+<%= turbo_frame_tag comment, class: 'w-full flex justify-center' do %>
+  <div class="flex flex-col px-8 py-8 mb-2 bg-white rounded-lg w-2/3">
+    <div class="avatar">
+      <div class='w-10'>
+        <%= image_tag comment.user.avatar_image.avatar.url, class:'rounded-full border border-zinc-200' %>
+      </div>
+      <p class="ml-1 leading-10 h-10 truncate max-w-xs text-sm"><%= comment.user.name %></p>
+    </div>
+    <div>
+      <div class="flex justify-center">
+        <div class="w-4/5">
+          <%= comment.content %>
+        </div>
+      </div>
+      <% if current_user.own?(comment) %>
+        <div class="flex flex-row justify-end mt-2">
+          <%= link_to "編集", edit_diary_comment_path(comment.diary, comment), class: 'text-xs link link-hover text-terracotta' %>
+          <%= link_to "削除", diary_comment_path(comment.diary, comment), data: { turbo_method: :delete, turbo_confirm: '削除してもよろしいですか？' }, class: 'text-xs link link-hover text-terracotta ml-2'  %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

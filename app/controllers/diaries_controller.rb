@@ -9,6 +9,8 @@ class DiariesController < ApplicationController
 
   # GET /diaries/1
   def show
+    @comment = Comment.new
+    @comments = @diary.comments.includes(:user).order(created_at: :desc)
   end
 
   # GET /diaries/new

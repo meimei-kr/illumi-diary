@@ -44,3 +44,13 @@
   background: none;
   border: 1px solid #b53663;
 }
+
+.cancel-button {
+  color: #fff;
+  background-color: #3f3f46;
+}
+
+.cancel-button:hover {
+  background-color: #5f5f66;
+  cursor: pointer;
+}

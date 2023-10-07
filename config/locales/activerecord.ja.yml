@@ -19,3 +19,5 @@ ja:
         content3: 日記3
         allow_comments: コメント許可
         allow_publication: 公開許可
+      comment:
+        content: コメント

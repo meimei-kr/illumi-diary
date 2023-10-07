@@ -14,8 +14,10 @@ ja:
     terms: 利用規約
     privacy: プライバシーポリシー
   flash_message:
-    update: "%{item}を更新しました"
-    destroy: "%{item}を削除しました"
+    created: "%{item}を作成しました"
+    not_created: "%{item}の作成に失敗しました"
+    updated: "%{item}を更新しました"
+    destroyed: "%{item}を削除しました"
     login: ログインしました
     logout: ログアウトしました
   user_sessions:

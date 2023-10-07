@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     collection do
       get :my_diaries
     end
-    resources :comments, only: %i[create show edit update destroy], shallow: true
+    resources :comments, only: %i[show create edit update destroy]
     resources :claps, only: %i[create], shallow: true
   end
 end
