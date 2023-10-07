@@ -20,6 +20,9 @@ ja:
     destroyed: "%{item}を削除しました"
     login: ログインしました
     logout: ログアウトしました
+    login_failed: メールアドレスまたはパスワードが間違っています
+    signup: 新規登録が完了しました
+    signup_failed: 新規登録に失敗しました
   user_sessions:
     new:
       title: ログイン

@@ -37,7 +37,7 @@ class DiariesController < ApplicationController
   # PATCH/PUT /diaries/1
   def update
     if @diary.update(diary_params)
-      redirect_to @diary, notice: "Diary was successfully updated.", status: :see_other
+      redirect_to @diary, success: t('flash_message.updated', item: Diary.model_name.human), status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -46,7 +46,7 @@ class DiariesController < ApplicationController
   # DELETE /diaries/1
   def destroy
     @diary.destroy!
-    redirect_to diaries_url, notice: "Diary was successfully destroyed.", status: :see_other
+    redirect_to diaries_url, success: t('flash_message.deleted', item: Diary.model_name.human), status: :see_other
   end
 
   # GET /diaries/1/complete

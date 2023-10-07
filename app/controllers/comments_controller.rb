@@ -1,16 +1,16 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
 
-  def create
-    @comment = current_user.comments.build(comment_params)
-    @comment.save
-    flash.now[:success] = t('flash_message.created', item: Comment.model_name.human)
-  end
-
   def show
   end
 
   def edit
+  end
+
+  def create
+    @comment = current_user.comments.build(comment_params)
+    @comment.save
+    flash.now[:success] = t('flash_message.created', item: Comment.model_name.human)
   end
 
   def update

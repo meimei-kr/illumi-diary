@@ -21,7 +21,7 @@ module IllumiDiary
     config.i18n.default_locale = :ja
 
     # config/locales配下のフォルダも含めてja.ymlを参照できるように設定
-    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.yml").to_s]
+    config.i18n.load_path += Dir[Rails.root.join("config/locales/**/*.yml").to_s]
 
     # アプリケーションのタイムゾーンを日本時間に設定
     config.time_zone = "Tokyo"

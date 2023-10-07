@@ -10,13 +10,13 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_back_or_to diaries_path
     else
-      flash.now[:error] = 'メールアドレスまたはパスワードが間違っています'
+      flash.now[:error] = t('flash_message.login_failed')
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     logout
-    redirect_to root_path, success: 'ログアウトしました', status: :see_other
+    redirect_to root_path, success: t('flash_message.logout'), status: :see_other
   end
 end
