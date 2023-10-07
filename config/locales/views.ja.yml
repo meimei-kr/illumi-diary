@@ -16,8 +16,8 @@ ja:
   flash_message:
     created: "%{item}を作成しました"
     not_created: "%{item}の作成に失敗しました"
-    update: "%{item}を更新しました"
-    destroy: "%{item}を削除しました"
+    updated: "%{item}を更新しました"
+    destroyed: "%{item}を削除しました"
     login: ログインしました
     logout: ログアウトしました
   user_sessions:
