@@ -39,8 +39,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_101708) do
     t.text "content2", null: false
     t.text "content3", null: false
     t.bigint "user_id", null: false
-    t.boolean "allow_publication", default: false
-    t.boolean "allow_comments", default: false
+    t.boolean "allow_publication", default: false, null: false
+    t.boolean "allow_comments", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "comments_count", default: 0, null: false
