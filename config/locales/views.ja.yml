@@ -8,6 +8,7 @@ ja:
     diaries: みんなの日記
     new_diary: 日記作成
     my_diaries: My日記
+    profile: 登録情報
     logout: ログアウト
   footer:
     contact: お問い合わせ
@@ -17,12 +18,16 @@ ja:
     created: "%{item}を作成しました"
     not_created: "%{item}の作成に失敗しました"
     updated: "%{item}を更新しました"
+    not_updated: "%{item}の更新に失敗しました"
     destroyed: "%{item}を削除しました"
     login: ログインしました
     logout: ログアウトしました
     login_failed: メールアドレスまたはパスワードが間違っています
     signup: 新規登録が完了しました
     signup_failed: 新規登録に失敗しました
+    all_fields_blank: 全ての項目を入力してください
+    not_valid: 現在のパスワードが正しくありません
+    not_corresponded: 新しいパスワードと新しいパスワード（確認用）が一致しません
   user_sessions:
     new:
       title: ログイン
@@ -42,3 +47,11 @@ ja:
       title: My日記
     complete:
       title: 日記作成完了
+  profiles:
+    show:
+      title: 登録情報
+    edit_password:
+      title: パスワード変更
+      current_password: 現在のパスワード
+      password: 新しいパスワード
+      password_confirmation: 新しいパスワード（確認用）

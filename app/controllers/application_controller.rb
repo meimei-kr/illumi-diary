@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :require_login
+  add_flash_types :success, :error
 
   rescue_from ActionController::RoutingError, with: :render_404
 

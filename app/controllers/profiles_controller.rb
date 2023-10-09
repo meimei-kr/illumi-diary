@@ -1,0 +1,57 @@
+class ProfilesController < ApplicationController
+  before_action :set_profile, only: %i[ show edit edit_password update update_password ]
+
+  def show; end
+
+  def edit; end
+
+  def edit_password; end
+
+  def update
+    @user.updating_password = false # パスワード更新フラグをfalseにする
+
+    if @user.update(profile_params)
+      redirect_to profile_path, success: t('flash_message.updated', item: 'ユーザー情報')
+    else
+      flash.now[:error] = t('flash_message.not_updated', item: 'ユーザー情報')
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def update_password
+    @user.updating_password = true # パスワード更新フラグをtrueにする
+
+    # 現在のパスワードが正しくない場合
+    unless @user.valid_password?(password_params[:current_password])
+      flash.now[:error] = t('flash_message.not_valid')
+      return render :edit_password, status: :unprocessable_entity
+    end
+
+    # 新しいパスワードと確認用パスワードが一致しない場合
+    unless password_params[:password] == password_params[:password_confirmation]
+      flash.now[:error] = t('flash_message.not_corresponded')
+      return render :edit_password, status: :unprocessable_entity
+    end
+
+    if @user.update(password: password_params[:password], password_confirmation: password_params[:password_confirmation])
+      redirect_to profile_path, success: t('flash_message.updated', item: User.human_attribute_name(:password))
+    else
+      flash.now[:error] = t('flash_message.not_updated', item: User.human_attribute_name(:password))
+      render :edit_password, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def profile_params
+    params.require(:user).permit(:name, :email, :avatar_image, :character_image)
+  end
+
+  def password_params
+    params.require(:user).permit(:current_password, :password, :password_confirmation)
+  end
+
+  def set_profile
+    @user = User.find(current_user.id)
+  end
+end

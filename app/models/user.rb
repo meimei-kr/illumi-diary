@@ -7,14 +7,20 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
-  validates :password, confirmation: true, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
-  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
+  validates :password, confirmation: true, length: { minimum: 8 }, if: :should_validate_password?
+  validates :password_confirmation, presence: true, if: :should_validate_password?
 
   mount_uploader :avatar_image, AvatarImageUploader
   mount_uploader :character_image, CharacterImageUploader
 
   attr_accessor :avatar_image_cache
   attr_accessor :character_image_cache
+  attr_accessor :updating_password
+
+  # パスワードのバリデーションを実行するか判定する
+  def should_validate_password?
+    new_record? || updating_password
+  end
 
   # このユーザーが引数で渡されたオブジェクトの所有者であるかどうかを判定する
   def own?(object)

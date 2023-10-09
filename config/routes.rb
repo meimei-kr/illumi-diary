@@ -14,4 +14,10 @@ Rails.application.routes.draw do
     resources :comments, only: %i[show create edit update destroy]
     resources :claps, only: %i[create], shallow: true
   end
+  resource :profile, only: %i[show edit update] do
+    collection do
+      get 'edit_password'
+      patch 'update_password'
+    end
+  end
 end

@@ -10,12 +10,11 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     @comment.save
-    flash.now[:success] = t('flash_message.created', item: Comment.model_name.human)
   end
 
   def update
     if @comment.update(comment_params)
-      redirect_to diary_comment_path(@comment.diary, @comment), success: t('flash_message.updated', item: Comment.model_name.human)
+      redirect_to diary_comment_path(@comment.diary, @comment)
     else
       render :edit, status: :unprocessable_entity
     end
