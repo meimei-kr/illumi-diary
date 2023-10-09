@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :password, confirmation: true, length: { minimum: 8 }, if: :should_validate_password?
   validates :password_confirmation, presence: true, if: :should_validate_password?
+  validates :reset_password_token, uniqueness: true, allow_nil: true
 
   mount_uploader :avatar_image, AvatarImageUploader
   mount_uploader :character_image, CharacterImageUploader

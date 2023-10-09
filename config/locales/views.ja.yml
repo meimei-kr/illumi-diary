@@ -4,6 +4,10 @@ ja:
       create: 作成する
       update: 更新する
       destroy: 削除する
+    label:
+      email: メールアドレス
+      password: パスワード
+      password_confirmation: パスワード（確認用）
   header:
     diaries: みんなの日記
     new_diary: 日記作成
@@ -28,9 +32,13 @@ ja:
     all_fields_blank: 全ての項目を入力してください
     not_valid: 現在のパスワードが正しくありません
     not_corresponded: 新しいパスワードと新しいパスワード（確認用）が一致しません
+    sent_instructions: パスワード再設定のメールを送信しました
   user_sessions:
     new:
       title: ログイン
+      login: ログイン
+      signup_title: はじめてご利用の方
+      signup: 新規登録
   users:
     new:
       title: 新規登録
@@ -55,3 +63,12 @@ ja:
       current_password: 現在のパスワード
       password: 新しいパスワード
       password_confirmation: 新しいパスワード（確認用）
+  password_resets:
+    new:
+      title: パスワード再設定申請
+      submit: 認証メールを送信する
+    edit:
+      title: パスワード再設定
+      submit: パスワード更新
+  mailer:
+    subject: パスワード再設定
