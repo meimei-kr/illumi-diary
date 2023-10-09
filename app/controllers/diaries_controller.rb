@@ -1,6 +1,6 @@
 class DiariesController < ApplicationController
   skip_before_action :require_login, only: %i[index]
-  before_action :set_diary, only: %i[ show edit update destroy complete ]
+  before_action :set_diary, only: %i[ edit update destroy complete ]
 
   # GET /diaries
   def index
@@ -9,6 +9,7 @@ class DiariesController < ApplicationController
 
   # GET /diaries/1
   def show
+    @diary = Diary.find(params[:id])
     @comment = Comment.new
     @comments = @diary.comments.includes(:user).order(created_at: :desc)
   end
