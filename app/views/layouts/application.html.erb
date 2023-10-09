@@ -21,6 +21,9 @@
       <%= render 'shared/header_before_login' %>
     <% end %>
     <main class="flex flex-col grow">
+      <div class="bg-pale-beige flex justify-center">
+        <%= render 'shared/flash_message', class: 'max-w-md' %>
+      </div>
       <%= yield %>
     </main>
     <%= render 'shared/footer' %>
