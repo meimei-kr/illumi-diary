@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development? # http://localhost:3000/letter_opener でメールを見れるようになる
+
   root "static_pages#top"
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
@@ -20,4 +22,5 @@ Rails.application.routes.draw do
       patch 'update_password'
     end
   end
+  resources :password_resets, only: %i[new create edit update]
 end
