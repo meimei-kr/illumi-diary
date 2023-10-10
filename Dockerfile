@@ -31,7 +31,7 @@ RUN gem install bundler
 # ホストのGemfile、Gemfile.lock、yarn.lockをコピー
 COPY Gemfile ${APP_ROOT}/Gemfile
 COPY Gemfile.lock ${APP_ROOT}/Gemfile.lock
-COPY yarn.lock /app/yarn.lock
+COPY yarn.lock ${APP_ROOT}/yarn.lock
 
 # GemfileとGemfile.lockに基づいてRubyの依存関係をインストール
 RUN bundle install

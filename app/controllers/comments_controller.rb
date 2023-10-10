@@ -11,11 +11,14 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     @comment.save
+    flash.now[:success] = t('flash_message.created', item: Comment.model_name.human)
+    # 暗黙的にcreate.turbo_stream.erbを呼び出す
   end
 
   def update
     if @comment.update(comment_params)
-      redirect_to diary_comment_path(@comment.diary, @comment)
+      flash.now[:success] = t('flash_message.updated', item: Comment.model_name.human)
+      # 暗黙的にupdate.turbo_stream.erbを呼び出す
     else
       render :edit, status: :unprocessable_entity
     end
@@ -23,6 +26,8 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy!
+    flash.now[:success] = t('flash_message.destroyed', item: Comment.model_name.human)
+    # 暗黙的にdestroy.turbo_stream.erbを呼び出す
   end
 
   private

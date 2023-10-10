@@ -1,5 +1,5 @@
 <%= form_with(model: diary, class: "contents") do |form| %>
-  <%= render 'shared/error_message', object: form.object %>
+  <%= render 'shared/error_messages', object: form.object %>
 
   <div class="my-5">
     <%= form.label :content1 %>
@@ -19,12 +19,12 @@
   <div class="flex flex-row">
     <div class="label cursor-pointer inline-flex mr-4 my-5">
       <%= form.label :allow_publication, class: 'label-text mr-1' %>
-      <%= form.check_box :allow_publication, class: "checkbox" %>
+      <%= form.check_box :allow_publication, class: "w-5 h-5 cursor-pointer border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" %>
     </div>
 
     <div class="label cursor-pointer inline-flex my-5">
       <%= form.label :allow_comments, class: 'label-text mr-1' %>
-      <%= form.check_box :allow_comments, class: "checkbox" %>
+      <%= form.check_box :allow_comments, class: "w-5 h-5 cursor-pointer border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" %>
     </div>
   </div>
 

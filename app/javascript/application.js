@@ -1,2 +1,4 @@
 import "@hotwired/turbo-rails"
-import './confetti'
+import "./controllers"
+import "flowbite/dist/flowbite.turbo.js";
+import "./confetti"

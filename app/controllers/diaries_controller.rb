@@ -38,7 +38,7 @@ class DiariesController < ApplicationController
   # PATCH/PUT /diaries/1
   def update
     if @diary.update(diary_params)
-      redirect_to @diary, success: t('flash_message.updated', item: Diary.model_name.human), status: :see_other
+      redirect_to @diary, success: t('flash_message.updated', item: Diary.model_name.human)
     else
       render :edit, status: :unprocessable_entity
     end

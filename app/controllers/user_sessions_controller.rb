@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_back_or_to diaries_path
+      redirect_back_or_to diaries_path, success: t('flash_message.login')
     else
       flash.now[:error] = t('flash_message.login_failed')
       render :new, status: :unprocessable_entity

@@ -45,7 +45,7 @@
 
           <span class="text-gray-500 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm py-1">
             <% if !logged_in? || diary.count_user_claps(current_user) < 10 %>
-              <%= render 'claps', diary: diary %>
+              <%= render 'diaries/claps', diary: diary %>
             <% else %>
               <%= render 'max_claps', diary: diary %>
             <% end %>

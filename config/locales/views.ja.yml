@@ -29,7 +29,7 @@ ja:
     login_failed: メールアドレスまたはパスワードが間違っています
     signup: 新規登録が完了しました
     signup_failed: 新規登録に失敗しました
-    all_fields_blank: 全ての項目を入力してください
+    email_required: メールアドレスを入力してください
     not_valid: 現在のパスワードが正しくありません
     not_corresponded: 新しいパスワードと新しいパスワード（確認用）が一致しません
     sent_instructions: パスワード再設定のメールを送信しました
