@@ -1,12 +1,18 @@
 <% if @comment.errors.present? %>
   <%= turbo_stream.replace 'comment-form' do %>
-    <%= render 'form', comment: @comment, diary: @comment.diary %>
+    <%= render 'comments/form', comment: @comment, diary: @comment.diary %>
   <% end %>
 <% else %>
   <%= turbo_stream.replace 'comment-form' do %>
-    <%= render 'form', comment: Comment.new, diary: @comment.diary %>
+    <%= render 'comments/form', comment: Comment.new, diary: @comment.diary %>
   <% end %>
-  <%= turbo_stream.prepend "comments" do %>
-    <%= render 'comment', comment: @comment %>
+  <%= turbo_stream.prepend 'comments' do %>
+    <%= render 'comments/comment', comment: @comment %>
+  <% end %>
+  <%= turbo_stream.update 'flash' do %>
+    <%= render 'shared/flash_messages' %>
+  <% end %>
+  <%= turbo_stream.update 'diary' do %>
+    <%= render 'diaries/diary', diary: @comment.diary %>
   <% end %>
 <% end %>

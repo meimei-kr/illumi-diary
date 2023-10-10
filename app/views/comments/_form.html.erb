@@ -1,7 +1,6 @@
 <%= form_with model: comment, url: diary_comments_path(diary), class: 'mt-16', id: 'comment-form' do |f| %>
   <div class="flex justify-center">
     <div class="w-2/3">
-      <%= render 'shared/error_message', object: f.object %>
     </div>
   </div>
   <div class="my-5 flex justify-center">

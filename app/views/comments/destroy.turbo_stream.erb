@@ -1,1 +1,7 @@
-<%= turbo_stream.remove "comment_#{@comment.id}" %>
+<%= turbo_stream.remove @comment %>
+<%= turbo_stream.update 'flash' do %>
+  <%= render 'shared/flash_messages' %>
+<% end %>
+<%= turbo_stream.update 'diary' do %>
+  <%= render 'diaries/diary', diary: @comment.diary %>
+<% end %>

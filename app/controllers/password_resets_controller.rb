@@ -5,6 +5,10 @@ class PasswordResetsController < ApplicationController
 
   # パスワード再設定用のメールを送信する
   def create
+    if params[:email].blank?
+      flash.now[:error] = t('flash_message.email_required')
+      return render :new, status: :unprocessable_entity
+    end
     @user = User.find_by(email: params[:email])
     @user&.deliver_reset_password_instructions!
     redirect_to login_path, success: t('flash_message.sent_instructions')
