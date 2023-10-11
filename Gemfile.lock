@@ -177,6 +177,7 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
     ffi (1.16.2)
+    flatpickr (4.6.13.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     google-protobuf (3.24.3-aarch64-linux)
@@ -449,6 +450,7 @@ DEPENDENCIES
   draper
   factory_bot_rails
   faker
+  flatpickr
   jsbundling-rails
   kaminari
   letter_opener_web (~> 2.0)
