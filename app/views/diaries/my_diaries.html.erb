@@ -17,18 +17,7 @@
       </div>
     </div>
     <div>
-      <%= search_form_for @q, url: my_diaries_diaries_path do |f| %>
-        <div class="flex flex-row justify-center items-center mb-4">
-          <div>
-            <%= f.date_field :created_at_gteq, class: 'p-2 border rounded input input-bordered', value: Date.today %>
-            <span>〜</span>
-            <%= f.date_field :created_at_lteq_end_of_day, class: 'p-2 border rounded input input-bordered', value: Date.today %>
-          </div>
-          <div>
-            <%= f.submit class: 'ml-2 px-4 py-2 rounded-lg secondary-reverse-button btn cursor-pointer' %>
-          </div>
-        </div>
-      <% end %>
+      <%= render 'diaries/search_form' %>
       <div>
         <% if @diaries.present? %>
           <%= turbo_frame_tag "diaries-page-#{@diaries.current_page}" do %>
