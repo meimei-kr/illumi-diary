@@ -47,7 +47,11 @@ class DiariesController < ApplicationController
   # DELETE /diaries/1
   def destroy
     @diary.destroy!
-    redirect_to diaries_url, success: t('flash_message.destroyed', item: Diary.model_name.human), status: :see_other
+    if request.referer&.include?('my_diaries')
+      redirect_to my_diaries_diaries_url, success: t('flash_message.destroyed', item: Diary.model_name.human), status: :see_other
+    else
+      redirect_to diaries_url, success: t('flash_message.destroyed', item: Diary.model_name.human), status: :see_other
+    end
   end
 
   # GET /diaries/1/complete
