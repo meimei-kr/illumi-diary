@@ -4,7 +4,11 @@ class DiariesController < ApplicationController
 
   # GET /diaries
   def index
-    @diaries = Diary.includes(:user).where(allow_publication: true).order(created_at: :desc).page(params[:page]).per(10)
+    page_limit = 10
+    @current_page = params[:page].to_i
+    all_public_diaries = Diary.includes(:user).where(allow_publication: true).order(created_at: :desc)
+    @diaries = all_public_diaries.offset(page_limit * @current_page).limit(page_limit)
+    @next_page = @current_page + 1 if all_public_diaries.count > (page_limit * @current_page + page_limit)
   end
 
   # GET /diaries/1
@@ -47,9 +51,12 @@ class DiariesController < ApplicationController
   # DELETE /diaries/1
   def destroy
     @diary.destroy!
-    if request.referer&.include?('my_diaries')
+    if request.referer&.include?('/my_diaries') # My日記ページから日記を削除したとき
       redirect_to my_diaries_diaries_url, success: t('flash_message.destroyed', item: Diary.model_name.human), status: :see_other
-    else
+    elsif request.referer&.include?('/diaries/')  # 日記詳細ページから日記を削除したとき
+      session[:origin] = params[:origin]
+      redirect_to diaries_url, success: t('flash_message.destroyed', item: Diary.model_name.human), status: :see_other
+    else  # みんなの日記ページから日記を削除したとき
       redirect_to diaries_url, success: t('flash_message.destroyed', item: Diary.model_name.human), status: :see_other
     end
   end
@@ -63,8 +70,12 @@ class DiariesController < ApplicationController
 
   # GET /diaries/my_diaries
   def my_diaries
+    page_limit = 10
+    @current_page = params[:page].to_i
     @q = current_user.diaries.ransack(params[:q])
-    @diaries = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
+    all_my_diaries = @q.result(distinct: true).order(created_at: :desc)
+    @diaries = all_my_diaries.offset(page_limit * @current_page).limit(page_limit)
+    @next_page = @current_page + 1 if all_my_diaries.count > (page_limit * @current_page + page_limit)
   end
 
   private
