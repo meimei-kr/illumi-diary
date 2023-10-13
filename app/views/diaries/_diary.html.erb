@@ -35,9 +35,20 @@
 
     <div class="flex flex-row items-center">
       <% if current_user&.own?(diary) %>
-        <div class="inline-block flex-1">
-          <%= link_to "編集", edit_diary_path(diary), class: 'text-xs link link-hover text-terracotta', data: { turbo: false } %>
-          <%= link_to "削除", diary_path(diary), data: { turbo_method: :delete, turbo_confirm: '削除してもよろしいですか？' }, class: 'text-xs link link-hover text-terracotta ml-2'  %>
+        <div class="inline-block flex-1 flex flex-row items-center">
+          <%= link_to "編集", edit_diary_path(diary), class: 'text-xs link link-hover text-terracotta h-full', data: { turbo: false } %>
+          <% if request.fullpath == '/diaries/my_diaries.turbo_stream' || request.fullpath == '/diaries.turbo_stream' %>
+            <%= link_to "削除", diary_path(diary),
+                        data: { turbo_method: :delete,
+                                turbo_confirm: '削除してもよろしいですか？' },
+                        class: 'text-xs link link-hover text-terracotta ml-2' %>
+          <% else %>
+            <%= button_to '削除', diary_path(diary, origin: 'show'),
+                          method: :delete,
+                          data: { turbo: false },
+                          form: { class: 'text-xs link link-hover text-terracotta ml-2 h-full',
+                                  onsubmit: "return check()" } %>
+          <% end %>
         </div>
       <% end %>
 
@@ -47,7 +58,7 @@
             <% if !logged_in? || diary.count_user_claps(current_user) < 10 %>
               <%= render 'diaries/claps', diary: diary %>
             <% else %>
-              <%= render 'max_claps', diary: diary %>
+              <%= render 'diaries/max_claps', diary: diary %>
             <% end %>
             <span id="claps-count-<%= diary.id %>" class="ml-2"><%= diary.count_all_claps %></span>
           </span>

@@ -1,0 +1,15 @@
+<%= turbo_stream.update 'diaries' do %>
+  <% if @diaries.present? %>
+    <%= render @diaries %>
+  <% else %>
+    <%= render 'diaries/no_diaries' %>
+  <% end %>
+<% end %>
+<%= turbo_stream.update 'flash' do %>
+  <%= render 'shared/flash_messages' %>
+<% end %>
+<% if @next_page.present? %>
+  <%= turbo_stream.replace 'load_more' do %>
+    <%= turbo_frame_tag 'load_more', src: my_diaries_diaries_path(page: @next_page, format: :turbo_stream), loading: :lazy %>
+  <% end %>
+<% end %>
