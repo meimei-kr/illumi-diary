@@ -46,7 +46,8 @@
             <%= button_to '削除', diary_path(diary, origin: 'show'),
                           method: :delete,
                           data: { turbo: false },
-                          form: { class: 'text-xs link link-hover text-terracotta ml-2 h-full' } %>
+                          form: { class: 'text-xs link link-hover text-terracotta ml-2 h-full',
+                                  onsubmit: "return check()" } %>
           <% end %>
         </div>
       <% end %>
