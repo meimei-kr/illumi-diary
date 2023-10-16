@@ -13,6 +13,9 @@ set :environment, rails_env
 # cronのログの吐き出し場所
 set :output, "#{Rails.root}/log/cron.log"
 
+# 環境変数をCronジョブ内で利用できるように、envメソッドを使用して設定
+ENV.each { |k, v| env(k, v) }
+
 # Rakeタスクの実行
 every :hour do
   rake 'delete_guests:delete_expired_guests'
