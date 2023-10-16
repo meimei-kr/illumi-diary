@@ -76,9 +76,6 @@ gem 'draper'
 # Configuration
 gem 'config'
 
-# datepicker
-gem 'flatpickr'
-
 # cron
 gem 'whenever', require: false
 
