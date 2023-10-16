@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_033644) do
   enable_extension "plpgsql"
 
   create_table "claps", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.bigint "diary_id", null: false
     t.integer "count", default: 0, null: false
     t.datetime "created_at", null: false
