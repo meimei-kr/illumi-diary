@@ -5,7 +5,8 @@
     <%= render 'diaries/no_diaries' %>
   <% end %>
 <% end %>
-<% if session.delete(:origin) != 'show' %>
+<% origin = session.delete(:origin) %>
+<% if origin != 'show' && origin != 'authentication' %>
   <%= turbo_stream.update 'flash' do %>
     <%= render 'shared/flash_messages' %>
   <% end %>

@@ -18,6 +18,8 @@ class User < ApplicationRecord
   attr_accessor :character_image_cache
   attr_accessor :updating_password
 
+  scope :expired_guests, -> { where(is_member: false).where('created_at < ?', 1.day.ago) }
+
   # パスワードのバリデーションを実行するか判定する
   def should_validate_password?
     new_record? || updating_password
