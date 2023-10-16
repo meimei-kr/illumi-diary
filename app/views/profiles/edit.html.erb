@@ -6,20 +6,22 @@
     <%= form_with(model: @user, url: profile_path, class: 'space-y-4') do |form| %>
       <%= render 'shared/error_messages', object: form.object %>
 
-      <div class="flex flex-col">
-        <%= form.label :name, class: "mb-2 ml-1" %>
-        <%= form.text_field :name, class: 'p-2 border rounded input input-bordered w-full max-w-x' %>
-      </div>
+      <% if current_user.is_member %>
+        <div class="flex flex-col">
+          <%= form.label :name, class: "mb-2 ml-1" %>
+          <%= form.text_field :name, class: 'p-2 border rounded input input-bordered w-full max-w-x' %>
+        </div>
 
-      <div class="flex flex-col">
-        <%= form.label :email, class: "mb-2 ml-1" %>
-        <%= form.text_field :email, class: 'p-2 border rounded input input-bordered w-full max-w-x' %>
-      </div>
+        <div class="flex flex-col">
+          <%= form.label :email, class: "mb-2 ml-1" %>
+          <%= form.text_field :email, class: 'p-2 border rounded input input-bordered w-full max-w-x' %>
+        </div>
+      <% end %>
 
       <div class="flex items-center justify-between">
         <div class="flex flex-col inline">
           <div>
-            <%= form.label :avatar_image, class: "mb-2 ml-1" %><span>（任意）</span>
+            <%= form.label :avatar_image, class: "mb-2 ml-1" %>
           </div>
           <%= form.file_field :avatar_image, accept: 'image/*', class: 'file-input file-input-bordered w-full max-w-xs' %>
           <%= form.hidden_field :avatar_image_cache %>
@@ -31,8 +33,13 @@
 
       <div class="flex items-center justify-between">
         <div class="flex flex-col inline">
-          <div>
-            <%= form.label :character_image, class: "mb-2 ml-1" %><span>（任意）</span>
+          <div class="flex items-center mb-2 ml-1">
+            <%= form.label :character_image %>
+            <ion-icon name="help-circle-outline" data-tooltip-target="tooltip-light" data-tooltip-style="light" class="ml-2"></ion-icon>
+            <div id="tooltip-light" role="tooltip" class="absolute z-10 invisible inline-block px-4 py-3 text-xs font-light text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+              日記を作成した後に表示される画像です。<br />好きなものを設定して、日記を書くモチベーションを上げましょう！
+              <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
           </div>
           <%= form.file_field :character_image, accept: 'image/*', class: 'file-input file-input-bordered w-full max-w-xs' %>
           <%= form.hidden_field :character_image_cache %>

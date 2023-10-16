@@ -17,7 +17,10 @@ RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
 # パッケージリストを更新
 && apt-get update -qq \
 # ビルドツール、PostgreSQL開発ライブラリ、Node.js、Yarnをインストール
-&& apt-get install -y build-essential libpq-dev nodejs yarn imagemagick
+&& apt-get install -y build-essential libpq-dev nodejs yarn cron imagemagick
+
+# cronを起動
+RUN service cron start
 
 # ルートディレクトリを作成
 RUN mkdir ${APP_ROOT}

@@ -5,7 +5,8 @@ consecutive_days_array.each do |consecutive_days|
     name: Faker::Name.name,
     email: Faker::Internet.email,
     password: "password",
-    password_confirmation: "password"
+    password_confirmation: "password",
+    is_member: true
   )
 
   consecutive_days.times do |m|

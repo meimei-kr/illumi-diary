@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
-  skip_before_action :require_login, only: %i[new create]
+  skip_before_action :require_login, only: %i[new create guest_login]
+  before_action :redirect_if_logged_in, only: %i[new create]
 
   def new
     @user = User.new
@@ -8,6 +9,9 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
+      # indexビューリクエスト方法識別用パラメータ
+      session[:origin] = params[:origin]
+
       redirect_back_or_to diaries_path, success: t('flash_message.login')
     else
       flash.now[:error] = t('flash_message.login_failed')
@@ -18,5 +22,36 @@ class UserSessionsController < ApplicationController
   def destroy
     logout
     redirect_to login_path, success: t('flash_message.logout'), status: :see_other
+  end
+
+  def guest_login
+    guest_email = "guest_#{SecureRandom.alphanumeric(10)}@example_com"
+    password = SecureRandom.urlsafe_base64
+    loop do
+      @user = User.create(
+        name: 'ゲスト',
+        email: guest_email,
+        password: password,
+        password_confirmation: password
+      )
+      break if @user.persisted?
+    end
+
+    auto_login(@user)
+
+    # indexビューリクエスト方法識別用パラメータ
+    session[:origin] = params[:origin]
+
+    redirect_to diaries_path, success: t('flash_message.guest_login')
+  end
+
+  private
+
+  def redirect_if_logged_in
+    if logged_in? && current_user&.is_member?
+      # indexビューリクエスト方法識別用パラメータ
+      session[:origin] = 'authentication'
+      redirect_to diaries_path, success: t('flash_message.logged_in')
+    end
   end
 end
