@@ -12,6 +12,7 @@
     "canvas-confetti": "^1.8.0",
     "daisyui": "^3.8.1",
     "esbuild": "^0.19.4",
+    "flatpickr": "^4.6.13",
     "flowbite": "^1.8.1",
     "postcss": "^8.4.30",
     "stimulus-notification": "^2.2.0",
