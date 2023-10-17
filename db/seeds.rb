@@ -1,4 +1,4 @@
-consecutive_days_array = [6, 29, 99]
+consecutive_days_array = [Medal::BRONZE - 1, Medal::SILVER - 1, Medal::GOLD - 1]
 
 consecutive_days_array.each do |consecutive_days|
   user = User.create!(

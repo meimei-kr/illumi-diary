@@ -20,6 +20,8 @@ class User < ApplicationRecord
 
   scope :expired_guests, -> { where(is_member: false).where('created_at < ?', 1.day.ago) }
 
+  enum rank: { general: 0, bronze: 1, silver: 2, gold: 3 }
+
   # パスワードのバリデーションを実行するか判定する
   def should_validate_password?
     new_record? || updating_password
