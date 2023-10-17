@@ -2,7 +2,7 @@
 <div class="flex flex-col grow items-center justify-center w-full h-full bg-pale-beige">
   <div class="w-full max-w-md">
     <h1 class="text-2xl mb-4 text-center"><%= t('.title') %></h1>
-    <%= form_with url: login_path(origin: 'authentication'), class: 'space-y-4', data: { turbo: false } do |f| %>
+    <%= form_with url: login_path, class: 'space-y-4', data: { turbo: false } do |f| %>
       <div class="flex flex-col">
         <%= f.label :email, class: 'mb-2 ml-1' %>
         <%= f.text_field :email, class: 'p-2 border rounded input input-bordered w-full max-w-x' %>
@@ -20,7 +20,7 @@
     <div class="border border-gray-600 opacity-50 w-full my-20"></div>
 
     <h2 class="text-xl mt-10 ml-1 text-center"><%= t('.guest_login_title') %></h2>
-    <%= button_to t('.guest_login'), guest_login_path(origin: 'authentication'), class: 'h-full w-full' ,form: { class: "primary-button mt-4 p-2 rounded-full text-center" }, data: { turbo: false }, method: :post %>
+    <%= button_to t('.guest_login'), guest_login_path, class: 'h-full w-full' ,form: { class: "primary-button mt-4 p-2 rounded-full text-center" }, data: { turbo: false }, method: :post %>
     <h2 class="text-xl mt-10 ml-1 text-center"><%= t('.signup_title') %></h2>
     <div class="flex flex-col mb-40">
       <%= link_to t('.signup'), new_user_path, class: "primary-button mt-4 p-2 rounded-full text-center" %>
