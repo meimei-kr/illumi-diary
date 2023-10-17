@@ -53,10 +53,7 @@ class DiariesController < ApplicationController
     @diary.destroy!
     if request.referer&.include?('/my_diaries') # My日記ページから日記を削除したとき
       redirect_to my_diaries_diaries_url, success: t('flash_message.destroyed', item: Diary.model_name.human), status: :see_other
-    elsif request.referer&.include?('/diaries/')  # 日記詳細ページから日記を削除したとき
-      session[:origin] = params[:origin]
-      redirect_to diaries_url, success: t('flash_message.destroyed', item: Diary.model_name.human), status: :see_other
-    else  # みんなの日記ページから日記を削除したとき
+    else
       redirect_to diaries_url, success: t('flash_message.destroyed', item: Diary.model_name.human), status: :see_other
     end
   end

@@ -24,8 +24,9 @@
           </div>
           <%= turbo_frame_tag 'load_more', src: my_diaries_diaries_path(format: :turbo_stream), loading: :lazy %>
         <% else %>
-           <%= render 'diaries/no_diaries' %>
+          <%= render 'diaries/no_diaries' %>
         <% end %>
       </div>
+    </div>
   </div>
 </div>

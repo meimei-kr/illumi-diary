@@ -35,10 +35,6 @@ class UsersController < ApplicationController
       end
 
       auto_login(@user)
-
-      # indexビューリクエスト方法識別用パラメータ
-      session[:origin] = params[:origin]
-
       redirect_to diaries_path, success: t("flash_message.signup")
     else
       flash.now[:error] = t("flash_message.signup_failed")
@@ -73,9 +69,6 @@ class UsersController < ApplicationController
 
   def redirect_if_logged_in
     if logged_in? && current_user&.is_member?
-      # indexビューリクエスト方法識別用パラメータ
-      session[:origin] = 'authentication'
-
       redirect_to diaries_path, success: t('flash_message.logged_in')
     end
   end

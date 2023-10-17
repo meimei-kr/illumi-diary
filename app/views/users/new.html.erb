@@ -3,7 +3,7 @@
   <div class="w-full max-w-md">
     <h1 class="text-2xl mb-4 text-center">新規登録</h1>
 
-    <%= form_with(model: @user, url: users_path(origin: 'authentication'), class: 'space-y-4', data: { turbo: false }) do |form| %>
+    <%= form_with(model: @user, class: 'space-y-4', data: { turbo: false }) do |form| %>
       <%= render 'shared/error_messages', object: form.object %>
 
       <div class="flex flex-col">

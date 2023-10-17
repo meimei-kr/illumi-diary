@@ -37,18 +37,11 @@
       <% if current_user&.own?(diary) %>
         <div class="inline-block flex-1 flex flex-row items-center">
           <%= link_to "編集", edit_diary_path(diary), class: 'text-xs link link-hover text-terracotta h-full', data: { turbo: false } %>
-          <% if request.fullpath == '/diaries/my_diaries.turbo_stream' || request.fullpath == '/diaries.turbo_stream' %>
-            <%= link_to "削除", diary_path(diary),
-                        data: { turbo_method: :delete,
-                                turbo_confirm: '削除してもよろしいですか？' },
-                        class: 'text-xs link link-hover text-terracotta ml-2' %>
-          <% else %>
-            <%= button_to '削除', diary_path(diary, origin: 'show'),
-                          method: :delete,
-                          data: { turbo: false },
-                          form: { class: 'text-xs link link-hover text-terracotta ml-2 h-full',
-                                  onsubmit: "return check()" } %>
-          <% end %>
+          <%= button_to '削除', diary_path(diary),
+                        method: :delete,
+                        data: { turbo: false },
+                        form: { class: 'text-xs link link-hover text-terracotta ml-2 h-full',
+                                onsubmit: "return check()" } %>
         </div>
       <% end %>
 
