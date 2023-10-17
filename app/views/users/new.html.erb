@@ -35,11 +35,7 @@
           <%= form.hidden_field :avatar_image_cache %>
         </div>
         <div class="inline">
-          <% if current_user.present? %>
-            <%= image_tag @guest_user.avatar_image.thumb.url, class: 'rounded-full mt-2 object-cover border border-zinc-200', style: "width: 100px; height: 100px;", id: 'preview'  %>
-          <% else %>
-            <%= image_tag @user.avatar_image.thumb.url, class: 'rounded-full mt-2 object-cover border border-zinc-200', style: "width: 100px; height: 100px;", id: 'preview'  %>
-          <% end %>
+          <%= image_tag @user.avatar_image_url, class: 'rounded-full mt-2 object-cover border border-zinc-200', style: "width: 100px; height: 100px;", id: 'preview'  %>
         </div>
       </div>
 
@@ -57,11 +53,7 @@
           <%= form.hidden_field :character_image_cache %>
         </div>
         <div class="inline">
-          <% if current_user.present? %>
-            <%= image_tag @guest_user.character_image.thumb.url, class: 'rounded-full mt-2 object-cover border border-zinc-200', style: "width: 100px; height: 100px;", id: 'preview'  %>
-          <% else %>
-            <%= image_tag @user.character_image.thumb.url, class: 'rounded-full mt-2 object-cover border border-zinc-200', style: "width: 100px; height: 100px;", id: 'preview'  %>
-          <% end %>
+          <%= image_tag @user.character_image_url, class: 'rounded-full mt-2 object-cover border border-zinc-200', style: "width: 100px; height: 100px;", id: 'preview'  %>
         </div>
       </div>
 

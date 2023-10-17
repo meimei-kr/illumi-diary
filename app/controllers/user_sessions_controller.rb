@@ -22,7 +22,7 @@ class UserSessionsController < ApplicationController
   end
 
   def guest_login
-    guest_email = "guest_#{SecureRandom.alphanumeric(10)}@example_com"
+    guest_email = "guest_#{SecureRandom.alphanumeric(10)}@example.com"
     password = SecureRandom.urlsafe_base64
     loop do
       @user = User.create(

@@ -15,7 +15,7 @@
       </p>
     <% end %>
   </div>
-  <%= image_tag current_user.character_image_url, class: 'rounded-xl object-cover' %>
+  <%= image_tag current_user.character_image_url, class: 'rounded-xl object-cover w-96' %>
   <div class="flex justify-center mt-8 mb-16">
     <div class="lex flex-row justify-center items-center p-2 primary-button rounded-full w-48">
       <%= link_to diary_path(@diary), class: 'h-full w-full flex justify-center items-center' do %>

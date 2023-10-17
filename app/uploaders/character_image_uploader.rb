@@ -1,13 +1,7 @@
 class CharacterImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
-
-  process resize_to_fill: [400, 400]
-
-  version :thumb do
-    process resize_to_fill: [100, 100]
-  end
+  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -21,7 +15,7 @@ class CharacterImageUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    ActionController::Base.helpers.asset_path('default_character.jpg')
+    ActionController::Base.helpers.asset_path('default_character.png')
   end
 
   # Process files as they are uploaded:
