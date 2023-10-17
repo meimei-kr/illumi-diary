@@ -2,25 +2,24 @@ class UserDecorator < ApplicationDecorator
   delegate_all
 
   def medal_to_give
-    if object.continuous_writing_days == 7
-      "7日間日記を続けられたので、銅メダルを授与します！"
-    elsif object.continuous_writing_days == 30
-      "30日間日記を続けられたので、銀メダルを授与します！"
-    elsif object.continuous_writing_days == 100
-      "100日間日記を続けられたので、金メダルを授与します！"
+    if object.continuous_writing_days == Medal::BRONZE
+      "#{Medal::BRONZE}日間日記を続けられたので、銅メダルを授与します！"
+    elsif object.continuous_writing_days == Medal::SILVER
+      "#{Medal::SILVER}日間日記を続けられたので、銀メダルを授与します！"
+    elsif object.continuous_writing_days == Medal::GOLD
+      "#{Medal::GOLD}日間日記を続けられたので、金メダルを授与します！"
     else
       nil
     end
   end
 
   def medal_color
-    consecutive_days = object.continuous_writing_days
     case
-    when consecutive_days >= 100
+    when self.gold?
       "#f4d35e"
-    when consecutive_days >= 30
+    when self.silver?
       "#6c6c6c"
-    when consecutive_days >= 7
+    when self.bronze?
       "#ac6b25"
     else
       nil

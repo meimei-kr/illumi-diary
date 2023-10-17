@@ -32,7 +32,11 @@ class DiariesController < ApplicationController
     @diary = current_user.diaries.build(diary_params)
 
     if @diary.save
+      # 日記作成完了フラグをセッションに格納
+      # 日記作成完了後のみ、完了画面を表示したいため、その判定用
       session[:diary_created] = true
+
+      check_win_medal
       redirect_to complete_diary_path(@diary)
     else
       render :new, status: :unprocessable_entity
@@ -60,7 +64,7 @@ class DiariesController < ApplicationController
 
   # GET /diaries/1/complete
   def complete
-    unless session.delete(:diary_created)
+    unless session.delete(:diary_created) #  日記作成完了フラグをセッションから削除
       raise ActionController::RoutingError.new('Not Found')
     end
   end
@@ -76,13 +80,25 @@ class DiariesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_diary
-      @diary = current_user.diaries.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def diary_params
-      params.require(:diary).permit(:content1, :content2, :content3, :allow_publication, :allow_comments)
+  # Use callbacks to share common setup or constraints between actions.
+  def set_diary
+    @diary = current_user.diaries.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def diary_params
+    params.require(:diary).permit(:content1, :content2, :content3, :allow_publication, :allow_comments)
+  end
+
+  # メダル付与対象の日記記入継続日数か判定して、該当すればユーザーのランクを更新
+  def check_win_medal
+    if current_user.continuous_writing_days == Medal::BRONZE
+      current_user.bronze!
+    elsif current_user.continuous_writing_days == Medal::SILVER
+      current_user.silver!
+    elsif current_user.continuous_writing_days == Medal::GOLD
+      current_user.gold!
     end
+  end
 end
