@@ -27,7 +27,7 @@
           <%= form.hidden_field :avatar_image_cache %>
         </div>
         <div class="inline">
-          <%= image_tag @user.avatar_image.thumb.url, class: 'rounded-full mt-2 object-cover', style: "width: 100px; height: 100px;", id: 'preview'  %>
+          <%= image_tag @user.avatar_image_url, class: 'rounded-full mt-2 object-cover', style: "width: 100px; height: 100px;", id: 'preview'  %>
         </div>
       </div>
 
@@ -45,7 +45,7 @@
           <%= form.hidden_field :character_image_cache %>
         </div>
         <div class="inline">
-          <%= image_tag @user.character_image.thumb.url, class: 'rounded-full mt-2 object-cover', style: "width: 100px; height: 100px;", id: 'preview'  %>
+          <%= image_tag @user.character_image_url, class: 'rounded-full mt-2 object-cover', style: "width: 100px; height: 100px;", id: 'preview'  %>
         </div>
       </div>
 

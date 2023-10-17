@@ -20,11 +20,11 @@
         <% end %>
         <tr class="h-32">
           <th scope="row" class="text-left w-72"><%= User.human_attribute_name(:avatar_image) %></th>
-          <td><%= image_tag current_user.avatar_image.thumb.url, class: 'rounded-full mt-2 object-cover border border-zinc-200', style: "width: 100px; height: 100px;" %></td>
+          <td><%= image_tag current_user.avatar_image_url, class: 'rounded-full mt-2 object-cover border border-zinc-200', style: "width: 100px; height: 100px;" %></td>
         </tr>
         <tr class="h-32">
           <th scope="row" class="text-left w-72"><%= User.human_attribute_name(:character_image) %></th>
-          <td><%= image_tag current_user.character_image.thumb.url, class: 'rounded-full mt-2 object-cover border border-zinc-200', style: "width: 100px; height: 100px;" %></td>
+          <td><%= image_tag current_user.character_image_url, class: 'rounded-full mt-2 object-cover border border-zinc-200', style: "width: 100px; height: 100px;" %></td>
         </tr>
         <tr></tr>
       </table>
