@@ -73,7 +73,18 @@ class DiariesController < ApplicationController
   def my_diaries
     page_limit = 10
     @current_page = params[:page].to_i
-    @q = current_user.diaries.ransack(params[:q])
+
+    # 検索条件を指定しても、結果が表示される前にmy_diaries.turbo_stream.erbが
+    # 呼び出されるために検索結果が表示されない不具合を解消するために、
+    # 検索条件がある場合は、セッションに格納するようにする
+    if session[:q].present?
+      @q = current_user.diaries.ransack(session[:q])
+      session.delete(:q)
+    else
+      session[:q] = params[:q]
+      @q = current_user.diaries.ransack(params[:q])
+    end
+
     all_my_diaries = @q.result(distinct: true).order(created_at: :desc)
     @diaries = all_my_diaries.offset(page_limit * @current_page).limit(page_limit)
     @next_page = @current_page + 1 if all_my_diaries.count > (page_limit * @current_page + page_limit)
