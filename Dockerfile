@@ -1,6 +1,9 @@
 # Docker Hubからruby:3.2.2のイメージをプルする
 FROM ruby:3.2.2
 
+# Rails環境を本番環境にする
+ENV RAILS_ENV=production
+
 # アプリのルートディレクトリ
 ENV APP_ROOT /illumi-diary
 
