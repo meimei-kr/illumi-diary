@@ -86,3 +86,4 @@ test:
 production:
   <<: *default
   database: illumi_diary_production
+  url: <%= ENV['DATABASE_URL'] %>
