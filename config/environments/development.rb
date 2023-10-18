@@ -68,6 +68,9 @@ Rails.application.configure do
   # To use better_errors on Docker
   BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 
+  # 許可するホストを指定する
+  config.hosts << "illumi-diary.onrender.com"
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
