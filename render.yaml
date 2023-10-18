@@ -6,15 +6,11 @@ databases:
 
 services:
   - type: web
-    name: illumi-diary-db
-    runtime: ruby
+    name: illumi-diary-app
     region: singapore
-    buildCommand: "./bin/render-build.sh"
-    startCommand: "bundle exec puma -C config/puma.rb"
+    dockerfilePath: ./Dockerfile
     envVars:
-      - key: <%= ENV['DATABASE_URL'] %>
+      - key: DATABASE_URL
         fromDatabase:
-          name: illumi-diary-app
+          name: illumi-diary-db
           property: connectionString
-      - key: <%= ENV['RAILS_MASTER_KEY'] %>
-        sync: false
