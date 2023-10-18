@@ -1,6 +1,8 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -21,10 +23,10 @@ module IllumiDiary
     config.i18n.default_locale = :ja
 
     # config/locales配下のフォルダも含めてja.ymlを参照できるように設定
-    config.i18n.load_path += Dir[Rails.root.join("config/locales/**/*.yml").to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.yml').to_s]
 
     # アプリケーションのタイムゾーンを日本時間に設定
-    config.time_zone = "Tokyo"
+    config.time_zone = 'Tokyo'
 
     # ActiveRecord がデータベースから時刻を取得する際のタイムゾーンを指定
     config.active_record.default_timezone = :local

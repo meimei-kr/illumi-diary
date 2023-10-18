@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
 
@@ -5,8 +7,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @comment = current_user.comments.build(comment_params)

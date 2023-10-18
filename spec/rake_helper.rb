@@ -6,7 +6,7 @@ RSpec.configure do |config|
     Rails.application.load_tasks # 全てのタスクを読み込む
   end
 
-  config.before(:each) do
+  config.before do
     Rake.application.tasks.each(&:reenable) # 全てのタスクをリセットする
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create guest_login]
   before_action :redirect_if_logged_in, only: %i[new create]
@@ -28,7 +30,7 @@ class UserSessionsController < ApplicationController
       @user = User.create(
         name: 'ゲスト',
         email: guest_email,
-        password: password,
+        password:,
         password_confirmation: password
       )
       break if @user.persisted?
@@ -41,8 +43,8 @@ class UserSessionsController < ApplicationController
   private
 
   def redirect_if_logged_in
-    if logged_in? && current_user&.is_member?
-      redirect_to diaries_path, success: t('flash_message.logged_in')
-    end
+    return unless logged_in? && current_user&.is_member?
+
+    redirect_to diaries_path, success: t('flash_message.logged_in')
   end
 end

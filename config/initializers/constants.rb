@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # メダル獲得までの日数
 module Medal
   BRONZE = 3

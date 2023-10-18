@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Diary < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
@@ -15,11 +17,11 @@ class Diary < ApplicationRecord
     claps.where(user_id: user.id).sum(:count)
   end
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     %w[created_at]
   end
 
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     []
   end
 end

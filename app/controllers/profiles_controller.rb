@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: %i[ show edit edit_password update update_password ]
+  before_action :set_profile, only: %i[show edit edit_password update update_password]
 
   def show; end
 
@@ -62,7 +64,7 @@ class ProfilesController < ApplicationController
   # キャッシュからアバター画像を取得する
   def retrieve_avatar_image_from_cache
     if !@user.will_save_change_to_avatar_image? && @user.avatar_image_cache.present?
-      @user.avatar_image = nil  # キャッシュから画像を取得するために一度nilにする
+      @user.avatar_image = nil # キャッシュから画像を取得するために一度nilにする
       @user.avatar_image.retrieve_from_cache!(@user.avatar_image_cache)
     end
     @user.avatar_image_cache = @user.avatar_image.cache_name

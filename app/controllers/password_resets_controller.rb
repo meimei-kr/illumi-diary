@@ -1,7 +1,16 @@
+# frozen_string_literal: true
+
 class PasswordResetsController < ApplicationController
   skip_before_action :require_login
 
   def new; end
+
+  # パスワード再設定用フォームを開く
+  def edit
+    @token = params[:id]
+    @user = User.load_from_reset_password_token(@token)
+    not_authenticated if @user.blank?
+  end
 
   # パスワード再設定用のメールを送信する
   def create
@@ -12,13 +21,6 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by(email: params[:email])
     @user&.deliver_reset_password_instructions!
     redirect_to login_path, success: t('flash_message.sent_instructions')
-  end
-
-  # パスワード再設定用フォームを開く
-  def edit
-    @token = params[:id]
-    @user = User.load_from_reset_password_token(@token)
-    return not_authenticated if @user.blank?
   end
 
   # パスワード更新実行

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
@@ -14,9 +16,7 @@ class User < ApplicationRecord
   mount_uploader :avatar_image, AvatarImageUploader
   mount_uploader :character_image, CharacterImageUploader
 
-  attr_accessor :avatar_image_cache
-  attr_accessor :character_image_cache
-  attr_accessor :updating_password
+  attr_accessor :avatar_image_cache, :character_image_cache, :updating_password
 
   scope :expired_guests, -> { where(is_member: false).where('created_at < ?', 1.day.ago) }
 
@@ -35,15 +35,13 @@ class User < ApplicationRecord
   # 当日含めて連続で日記を書いている日数を返す
   def continuous_writing_days
     days = 0
-    (Time.zone.today - 99 .. Time.zone.today).reverse_each do |date|
+    (Time.zone.today - 99..Time.zone.today).reverse_each do |date|
       start_of_day = date.beginning_of_day
       end_of_day = date.end_of_day
-      diaries_of_today = self.diaries.where(created_at: start_of_day..end_of_day)
-      if diaries_of_today.present?
-        days += 1
-      else
-        break
-      end
+      diaries_of_today = diaries.where(created_at: start_of_day..end_of_day)
+      break if diaries_of_today.blank?
+
+      days += 1
     end
     days
   end

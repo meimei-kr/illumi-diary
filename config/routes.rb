@@ -1,7 +1,9 @@
-Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development? # http://localhost:3000/letter_opener でメールを見れるようになる
+# frozen_string_literal: true
 
-  root "static_pages#top"
+Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development? # http://localhost:3000/letter_opener でメールを見れるようになる
+
+  root 'static_pages#top'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
