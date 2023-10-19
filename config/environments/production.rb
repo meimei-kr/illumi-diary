@@ -92,5 +92,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # 許可するホストを指定する
-  config.hosts << "illumi-diary-62eb98fbc6e8.herokuapp.com"
+  config.hosts << "illumi-diary-b4371beb90e3.herokuapp.com"
 end
