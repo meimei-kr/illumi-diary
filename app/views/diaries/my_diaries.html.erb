@@ -19,13 +19,9 @@
     <div>
       <%= render 'diaries/search_form' %>
       <div>
-        <% if @diaries.present? %>
-          <div id="diaries">
-          </div>
-          <%= turbo_frame_tag 'load_more', src: my_diaries_diaries_path(format: :turbo_stream), loading: :lazy %>
-        <% else %>
-          <%= render 'diaries/no_diaries' %>
-        <% end %>
+        <div id="diaries">
+        </div>
+        <%= turbo_frame_tag 'load_more', src: my_diaries_diaries_path(format: :turbo_stream), loading: :lazy %>
       </div>
     </div>
   </div>
