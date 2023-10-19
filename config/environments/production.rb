@@ -90,7 +90,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  # 許可するホストを指定する
-  config.hosts << "illumi-diary-b4371beb90e3.herokuapp.com"
 end
