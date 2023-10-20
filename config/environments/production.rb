@@ -66,7 +66,7 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -93,4 +93,18 @@ Rails.application.configure do
 
   # host情報をメーラーに設定
   config.action_mailer.default_url_options = Settings.default_url_options.to_h
+
+  # メールの送信方法
+  config.action_mailer.delivery_method = :smtp
+
+  # SMTPの詳細設定
+  config.action_mailer.smtp_settings = {
+    port: 587,
+    address: 'smtp.gmail.com',
+    domain: 'gmail.com',
+    user_name: ENV["GMAIL_ADDRESS"],
+    password: ENV["GMAIL_PASSWORD"],
+    authentication: 'login',
+    enable_starttls_auto: true
+  }
 end
