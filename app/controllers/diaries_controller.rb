@@ -40,7 +40,7 @@ class DiariesController < ApplicationController
       session[:diary_created] = true
 
       check_win_medal
-      redirect_to complete_diary_path(@diary)
+      redirect_to complete_diary_url(@diary)
     else
       render :new, status: :unprocessable_entity
     end

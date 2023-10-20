@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   private
 
   def not_authenticated
-    redirect_to login_path
+    redirect_to login_url
   end
 
   def render_404

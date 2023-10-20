@@ -20,7 +20,7 @@ class PasswordResetsController < ApplicationController
     end
     @user = User.find_by(email: params[:email])
     @user&.deliver_reset_password_instructions!
-    redirect_to login_path, success: t('flash_message.sent_instructions')
+    redirect_to login_url, success: t('flash_message.sent_instructions')
   end
 
   # パスワード更新実行
@@ -31,7 +31,7 @@ class PasswordResetsController < ApplicationController
 
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.change_password(params[:user][:password])
-      redirect_to login_path, success: t('flash_message.updated', item: User.human_attribute_name(:password))
+      redirect_to login_url, success: t('flash_message.updated', item: User.human_attribute_name(:password))
     else
       flash.now[:error] = t('.flash_message.not_updated', item: User.human_attribute_name(:password))
       render 'edit', status: :unprocessable_entity

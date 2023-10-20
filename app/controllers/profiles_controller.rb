@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
     retrieve_character_image_from_cache
 
     if @user.save
-      redirect_to profile_path, success: t('flash_message.updated', item: 'ユーザー情報')
+      redirect_to profile_url, success: t('flash_message.updated', item: 'ユーザー情報')
     else
       flash.now[:error] = t('flash_message.not_updated', item: 'ユーザー情報')
       render :edit, status: :unprocessable_entity
@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
     end
 
     if @user.update(password: password_params[:password], password_confirmation: password_params[:password_confirmation])
-      redirect_to profile_path, success: t('flash_message.updated', item: User.human_attribute_name(:password))
+      redirect_to profile_url, success: t('flash_message.updated', item: User.human_attribute_name(:password))
     else
       flash.now[:error] = t('flash_message.not_updated', item: User.human_attribute_name(:password))
       render :edit_password, status: :unprocessable_entity
