@@ -90,4 +90,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # host情報をメーラーに設定
+  config.action_mailer.default_url_options = Settings.default_url_options.to_h
 end
