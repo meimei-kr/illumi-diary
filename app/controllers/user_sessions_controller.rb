@@ -20,7 +20,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to login_path, success: t('flash_message.logout'), status: :see_other
+    redirect_to login_url, success: t('flash_message.logout'), status: :see_other
   end
 
   def guest_login
@@ -37,7 +37,7 @@ class UserSessionsController < ApplicationController
     end
 
     auto_login(@user)
-    redirect_to diaries_path, success: t('flash_message.guest_login')
+    redirect_to diaries_url, success: t('flash_message.guest_login')
   end
 
   private
@@ -45,6 +45,6 @@ class UserSessionsController < ApplicationController
   def redirect_if_logged_in
     return unless logged_in? && current_user&.is_member?
 
-    redirect_to diaries_path, success: t('flash_message.logged_in')
+    redirect_to diaries_url, success: t('flash_message.logged_in')
   end
 end

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
     if @user.save
       auto_login(@user)
-      redirect_to diaries_path, success: t('flash_message.signup')
+      redirect_to diaries_url, success: t('flash_message.signup')
     else
       flash.now[:error] = t('flash_message.signup_failed')
       render :new, status: :unprocessable_entity
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       @guest_user.destroy!
 
       auto_login(@user)
-      redirect_to diaries_path, success: t('flash_message.signup')
+      redirect_to diaries_url, success: t('flash_message.signup')
     else
       flash.now[:error] = t('flash_message.signup_failed')
       render :new, status: :unprocessable_entity
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
   def redirect_if_logged_in
     return unless logged_in? && current_user&.is_member?
 
-    redirect_to diaries_path, success: t('flash_message.logged_in')
+    redirect_to diaries_url, success: t('flash_message.logged_in')
   end
 
   # ゲストユーザーの情報を新しいアカウントにコピーする
