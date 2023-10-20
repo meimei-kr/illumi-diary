@@ -8,7 +8,7 @@
 
     <% unless current_page?(login_path) %>
       <div class="flex-none">
-        <%= button_to 'ログイン', login_path, class: 'btn btn-outline header-button px-4 py-2 cursor-pointer', method: :get %>
+        <%= button_to t('header.login'), login_path, class: 'btn btn-outline header-button px-4 py-2 cursor-pointer', method: :get %>
       </div>
     <% end %>
   </nav>

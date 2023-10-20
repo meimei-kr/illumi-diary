@@ -36,8 +36,8 @@
     <div class="flex flex-row items-center">
       <% if current_user&.own?(diary) %>
         <div class="inline-block flex-1 flex flex-row items-center">
-          <%= link_to "編集", edit_diary_path(diary), class: 'text-xs link link-hover text-terracotta h-full', data: { turbo: false } %>
-          <%= button_to '削除', diary_path(diary),
+          <%= link_to t('link.update'), edit_diary_path(diary), class: 'text-xs link link-hover text-terracotta h-full', data: { turbo: false } %>
+          <%= button_to t('link.delete'), diary_path(diary),
                         method: :delete,
                         data: { turbo: false },
                         form: { class: 'text-xs link link-hover text-terracotta ml-2 h-full',
