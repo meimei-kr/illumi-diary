@@ -99,6 +99,8 @@ group :development, :test do
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
+  # Detect N+1
+  gem 'bullet'
 end
 
 group :development do
