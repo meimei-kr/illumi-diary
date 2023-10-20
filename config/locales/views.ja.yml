@@ -4,6 +4,7 @@ ja:
       create: 作成する
       update: 更新する
       destroy: 削除する
+      register: 登録
     label:
       email: メールアドレス
       password: パスワード
@@ -14,6 +15,7 @@ ja:
     my_diaries: My日記
     profile: 登録情報
     logout: ログアウト
+    login: ログイン
   footer:
     contact: お問い合わせ
     terms: 利用規約
@@ -51,6 +53,7 @@ ja:
       title: みんなの日記
     new:
       title: 日記作成
+      h1: 今日の日記を作成
     show:
       title: 日記詳細
     edit:
@@ -63,6 +66,8 @@ ja:
     show:
       title: 登録情報
       signup: 新規登録
+      user_info: アカウント情報
+      password: パスワード
     edit:
       title: 登録情報編集
     edit_password:
@@ -79,3 +84,16 @@ ja:
       submit: パスワード更新
   mailer:
     subject: パスワード再設定
+  link:
+    login: ログイン
+    to_diaries_before_login: みんなの日記を見てみる
+    back_to_login: ログイン画面に戻る
+    update: 編集
+    delete: 削除
+    back: 戻る
+    change: 変更
+    show_diary: この日記の詳細ページへ
+    create_diary: 日記作成
+    to_diaries: みんなの日記へ
+    to_my_diaries: My日記へ
+    to_profile: ユーザー情報画面に戻る

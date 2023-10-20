@@ -4,7 +4,7 @@
   <div class="bg-white rounded-xl p-6 w-2/3 mt-4">
     <div class="overflow-x-auto">
       <div class="flex flex-row justify-center items-center">
-        <p class="mb-4 font-medium">アカウント情報</p>
+        <p class="mb-4 font-medium"><%= t('.user_info') %></p>
       </div>
       <table class="table">
         <tr></tr>
@@ -29,7 +29,7 @@
         <tr></tr>
       </table>
       <div class="flex flex-row justify-end">
-        <%= link_to '変更', edit_profile_path, class: 'btn secondary-reverse-button mt-4' %>
+        <%= link_to t('link.change'), edit_profile_path, class: 'btn secondary-reverse-button mt-4' %>
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@
     <div class="bg-white rounded-xl p-6 mt-4 mb-16 w-2/3">
       <div class="overflow-x-auto">
         <div class="flex flex-row justify-center items-center">
-          <p class="mb-4 font-medium">パスワード</p>
+          <p class="mb-4 font-medium"><%= t('.password') %></p>
         </div>
         <table class="table">
           <tr></tr>
@@ -49,7 +49,7 @@
           <tr></tr>
         </table>
         <div class="flex flex-row justify-end">
-          <%= link_to '変更', edit_password_profile_path, class: 'btn secondary-reverse-button mt-4' %>
+          <%= link_to t('link.change'), edit_password_profile_path, class: 'btn secondary-reverse-button mt-4' %>
         </div>
       </div>
     </div>

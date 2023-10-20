@@ -1,7 +1,7 @@
 <%= content_for(:title, t('.title')) %>
 <div class="flex flex-col grow bg-pale-beige items-center justify-center w-full h-full">
   <div class="flex flex-row justify-center">
-    <h1 class="text-2xl mt-10 text-center inline tracking-wider">日記詳細</h1>
+    <h1 class="text-2xl mt-10 text-center inline tracking-wider"><%= t('.title') %></h1>
     <%= image_tag 'diary.png', class: 'h-24 w-24 bg-cover' %>
   </div>
 
@@ -20,8 +20,8 @@
 
     <div class="flex flex-row justify-end mt-24">
       <div>
-        <%= link_to 'みんなの日記へ', diaries_path, class: 'text-terracotta link link-hover' %>
-        <%= link_to 'My日記へ', my_diaries_diaries_path, class: 'text-terracotta link link-hover ml-4' %>
+        <%= link_to t('link.to_diaries'), diaries_path, class: 'text-terracotta link link-hover' %>
+        <%= link_to t('link.to_my_diaries'), my_diaries_diaries_path, class: 'text-terracotta link link-hover ml-4' %>
       </div>
     </div>
   </div>
