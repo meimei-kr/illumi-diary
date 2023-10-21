@@ -26,4 +26,6 @@ Rails.application.routes.draw do
     end
   end
   resources :password_resets, only: %i[new create edit update]
+  get 'oauth/callback', to: 'oauth_login_api#callback'
+  get 'oauth/:provider', to: 'oauth_login_api#oauth', as: :auth_at_provider
 end

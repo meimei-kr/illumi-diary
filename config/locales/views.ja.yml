@@ -29,6 +29,7 @@ ja:
     login: ログインしました
     logout: ログアウトしました
     login_failed: メールアドレスまたはパスワードが間違っています
+    oauth_login_failed: "%{item}アカウントでのログインに失敗しました"
     logged_in: すでにログインしています
     guest_login: ゲストユーザーとしてログインしました
     signup: 新規登録が完了しました

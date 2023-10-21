@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :diaries, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :claps, dependent: :nullify
+  has_many :authentications, dependent: :destroy
+
+  accepts_nested_attributes_for :authentications
 
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
@@ -44,5 +47,9 @@ class User < ApplicationRecord
       days += 1
     end
     days
+  end
+
+  def logged_in_with_oauth?
+    authentications.present?
   end
 end
