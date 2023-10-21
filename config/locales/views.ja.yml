@@ -69,6 +69,7 @@ ja:
       signup: 新規登録
       user_info: アカウント情報
       password: パスワード
+      cancel_membership: 退会
     edit:
       title: 登録情報編集
     edit_password:
