@@ -1,3 +1,5 @@
 default_url_options:
-  protcol: 'https'
+  protocol: 'https'
   host: <%= ENV['HOST'] %>
+sorcery:
+    google_callback_url: 'https://illumi-diary.com/oauth/callback?provider=google'

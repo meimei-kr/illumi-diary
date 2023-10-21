@@ -14,7 +14,11 @@
 
         <div class="flex flex-col">
           <%= form.label :email, class: "mb-2 ml-1" %>
-          <%= form.text_field :email, class: 'p-2 border rounded input input-bordered w-full max-w-x' %>
+          <% if current_user.logged_in_with_oauth? %>
+            <p class="p-2"><%= @user.email %><p>
+          <% else %>
+            <%= form.text_field :email, class: 'p-2 border rounded input input-bordered w-full max-w-x' %>
+          <% end %>
         </div>
       <% end %>
 
@@ -50,7 +54,7 @@
       </div>
 
       <div class="flex flex-col">
-        <%= form.submit t('helpers.submit.create'), class: "primary-button p-2 mt-10 rounded-full text-center" %>
+        <%= form.submit class: "primary-button p-2 mt-10 rounded-full text-center" %>
       </div>
     <% end %>
 
