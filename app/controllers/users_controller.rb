@@ -43,6 +43,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(current_user.id)
+    @user.destroy!
+    redirect_to login_url, success: t('flash_message.destroyed', item: 'アカウント'), status: :see_other
+  end
+
   private
 
   def user_params

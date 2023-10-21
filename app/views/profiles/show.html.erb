@@ -63,4 +63,12 @@
       <%= link_to t('.signup'), new_user_path, class: 'btn secondary-button ml-2' %>
     </div>
   <% end %>
+
+  <!-- 退会エリア -->
+  <% if current_user.is_member %>
+    <div class="flex flex-row justify-end items-center mb-16 w-2/3">
+      <p>退会する</p>
+      <%= link_to t('.cancel_membership'), user_path(current_user), class: 'btn cancel-button ml-2', data: { turbo_method: :delete, turbo_confirm: '退会しますか？' } %>
+    </div>
+  <% end%>
 </div>
