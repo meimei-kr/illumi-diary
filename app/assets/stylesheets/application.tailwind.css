@@ -34,17 +34,6 @@
   color: #fff;
 }
 
-.header-button {
-  color: #fff;
-  background-color: #b53663;
-}
-
-.header-button:hover {
-  color: #b53663;
-  background: none;
-  border: 1px solid #b53663;
-}
-
 .cancel-button {
   color: #fff;
   background-color: #3f3f46;
