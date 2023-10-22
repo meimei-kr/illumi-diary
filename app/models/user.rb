@@ -11,7 +11,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :authentications
 
   validates :email, presence: true, uniqueness: true
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 50 }
   validates :password, confirmation: true, length: { minimum: 8 }, if: :should_validate_password?
   validates :password_confirmation, presence: true, if: :should_validate_password?
   validates :reset_password_token, uniqueness: true, allow_nil: true
