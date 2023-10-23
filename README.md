@@ -17,7 +17,7 @@
 脳がポジティブな思考回路を形成できるようになることが期待できます。  
 [補足]  
 精神科医の樺沢紫苑先生も、以下の著書でポジティブな出来事を3つ書くことを習慣にするのをオススメされています。  
-https://amzn.asia/d/eBYhRRV
+https://amzn.asia/d/eBYhRRV  
 https://onl.sc/bRh5iBN
 
 ## 差別化ポイント
