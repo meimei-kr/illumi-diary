@@ -8,9 +8,15 @@
     <div class="flex justify-between items-center mb-4">
       <div class="inline-flex items-center flex-grow">
         <%= image_tag diary.user.avatar_image.url, class: 'w-10 h-10 rounded-full flex-shrink-0 object-cover object-center border border-zinc-200' %>
-        <span class="flex-grow flex flex-col pl-3">
+        <span class="flex-none flex flex-col pl-3">
           <span class="title-font font-medium"><%= diary.user.name %></span>
         </span>
+        <% color = diary.user.decorate.medal_color %>
+        <% unless color.nil? %>
+          <div class="flex-grow ml-3">
+            <i class="fa-solid fa-medal fa-xl" style="color: <%= color %>"></i>
+          </div>
+        <% end %>
       </div>
 
       <p class="text-xs border rounded-full px-2.5 py-1 border-terracotta/70 text-gray-500"><%= diary.allow_publication ? '公開' : '非公開' %></p>
