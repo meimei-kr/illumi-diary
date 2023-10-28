@@ -1,14 +1,14 @@
 <header class="bg-pale-beige">
-  <nav class="navbar px-14">
+  <nav class="navbar md:px-14 px-4">
     <div class="flex-1">
       <%= link_to root_path do %>
-        <%= image_tag "logo.png", class:"w-25 h-10" %>
+        <%= image_tag "logo.png", class:"sm:h-8 h-6" %>
       <% end %>
     </div>
 
     <% unless current_page?(login_path) %>
       <div class="flex-none">
-        <%= button_to t('header.login'), login_path, class: 'btn secondary-button px-4 py-2 cursor-pointer', method: :get %>
+        <%= button_to t('header.login'), login_path, class: 'btn btn-xs sm:btn-sm md:btn-md secondary-button cursor-pointer', method: :get %>
       </div>
     <% end %>
   </nav>
