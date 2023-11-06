@@ -1,8 +1,8 @@
 <header class="bg-pale-beige">
-  <nav class="flex justify-between items-center md:px-14 px-4">
-    <div class="flex items-center">
-      <%= link_to root_path do %>
-        <%= image_tag "logo.png", class:"md:w-24 w-20" %>
+  <nav class="flex justify-between items-center md:px-14 px-4 md:h-16 h-12">
+    <div class="flex items-center h-full">
+      <%= link_to root_path, class:"h-2/3" do %>
+        <%= image_tag "logo.png", class:"h-full" %>
       <% end %>
     </div>
 
@@ -13,11 +13,11 @@
           <i class="fa-solid fa-medal" style="color: <%= color %>"></i>
         </div>
       <% end %>
-      <div class="flex flex-1 ml-2.5 avatar">
+      <div class="flex flex-1 ml-2.5 avatar items-center h-full">
         <div class='md:w-10 w-8 md:h-10 h-8 md:my-0 my-1 flex justify-center items-center'>
           <%= image_tag current_user.avatar_image_url, class:'rounded-full' %>
         </div>
-        <p class="ml-1 leading-10 h-10 align-middle truncate max-w-xs md:text-sm text-xs"><%= current_user.name %></p>
+        <p class="ml-1 leading-10 h-2/3 truncate max-w-xs md:text-sm text-xs"><%= current_user.name %></p>
       </div>
 
       <div class="flex-none dropdown dropdown-end ml-3">

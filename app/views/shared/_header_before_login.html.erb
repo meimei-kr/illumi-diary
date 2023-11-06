@@ -1,14 +1,14 @@
 <header class="bg-pale-beige">
-  <nav class="navbar md:px-14 px-4">
-    <div class="flex-1">
-      <%= link_to root_path do %>
-        <%= image_tag "logo.png", class:"sm:h-8 h-6" %>
+  <nav class="navbar md:px-14 px-4 md:h-16 h-12">
+    <div class="flex-1 items-center h-full">
+      <%= link_to root_path, class:"h-2/3" do %>
+        <%= image_tag "logo.png", class:"h-full" %>
       <% end %>
     </div>
 
     <% unless current_page?(login_path) %>
       <div class="flex-none">
-        <%= button_to t('header.login'), login_path, class: 'btn btn-xs sm:btn-sm md:btn-md secondary-button cursor-pointer', method: :get %>
+        <%= button_to t('header.login'), login_path, class: 'btn btn-sm md:btn-md secondary-button cursor-pointer', method: :get %>
       </div>
     <% end %>
   </nav>
