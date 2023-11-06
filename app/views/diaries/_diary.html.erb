@@ -1,11 +1,30 @@
-<div id="<%= dom_id diary %>" class="px-8 py-8 flex flex-wrap md:flex-nowrap bg-white rounded-lg mb-2">
+<div id="<%= dom_id diary %>" class="md:px-8 px-6 md:py-8 py-6 flex flex-wrap md:flex-row flex-col bg-white rounded-lg mb-2">
+<div class="flex flex-row">
   <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
-    <span class="text-sm pb-2 mb-2 border-b-2 border-gray-400/30"><%= diary.created_at.to_s[5,2] %></span>
-    <span class="font-medium text-xl title-font leading-none"><%= diary.created_at.to_s[8,2] %></span>
+    <span class="md:text-sm text-xs pb-2 mb-2 border-b-2 border-gray-400/30"><%= diary.created_at.to_s[5,2] %></span>
+    <span class="font-medium md:text-xl text-lg title-font leading-none"><%= diary.created_at.to_s[8,2] %></span>
   </div>
+  <div class="md:hidden flex justify-end items-center mb-4 w-full">
+    <div class="flex grow justify-end items-center">
+      <%= image_tag diary.user.avatar_image.url, class: 'w-10 h-10 rounded-full flex-shrink-0 object-cover object-center border border-zinc-200' %>
+      <span class="flex-none flex flex-col pl-3">
+        <span class="title-font font-medium"><%= diary.user.name %></span>
+      </span>
+      <% color = diary.user.decorate.medal_color %>
+      <% unless color.nil? %>
+        <div class="ml-3">
+          <i class="fa-solid fa-medal fa-xl" style="color: <%= color %>"></i>
+        </div>
+      <% end %>
+    </div>
 
-  <div class="flex-grow pl-6">
-    <div class="flex justify-between items-center mb-4">
+    <p class="text-xs border rounded-full px-2.5 py-1 ml-2 border-terracotta/70 text-gray-500"><%= diary.allow_publication ? '公開' : '非公開' %></p>
+  </div>
+</div>
+
+
+  <div class="flex-grow md:pl-6 pl-0 md:mt-0 mt-4">
+    <div class="md:flex hidden justify-between items-center mb-4">
       <div class="inline-flex items-center flex-grow">
         <%= image_tag diary.user.avatar_image.url, class: 'w-10 h-10 rounded-full flex-shrink-0 object-cover object-center border border-zinc-200' %>
         <span class="flex-none flex flex-col pl-3">
@@ -24,15 +43,15 @@
 
     <div>
       <%= link_to diary_path(diary), data: { turbo: false } do %>
-        <div class="leading-relaxed mb-5 overflow-hidden break-all flex flex-row">
+        <div class="leading-relaxed mb-5 overflow-hidden break-all flex flex-row md:text-base text-sm">
           <strong class="mr-2">1.</strong>
           <%= diary.content1 %>
         </div>
-        <div class="leading-relaxed mb-5 overflow-hidden break-all flex flex-row">
+        <div class="leading-relaxed mb-5 overflow-hidden break-all flex flex-row md:text-base text-sm">
           <strong class="mr-2">2.</strong>
           <%= diary.content2 %>
         </div>
-        <div class="leading-relaxed mb-5 overflow-hidden break-all flex flex-row">
+        <div class="leading-relaxed mb-5 overflow-hidden break-all flex flex-row md:text-base text-sm">
           <strong class="mr-2">3.</strong>
           <%= diary.content3 %>
         </div>
