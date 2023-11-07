@@ -1,7 +1,7 @@
 <%= content_for(:title, t('.title')) %>
 <div class="flex flex-col grow items-center justify-center w-full h-full bg-pale-beige px-4">
   <div class="w-full max-w-md mx-auto">
-    <h1 class="text-2xl mb-4 text-center"><%= t('.title') %></h1>
+    <h1 class="sm:text-2xl text-xl mb-4 text-center"><%= t('.title') %></h1>
     <%= form_with model: @user, url: password_reset_path(@token), class: 'space-y-4' do |f| %>
       <div class="flex flex-col">
         <%= f.label :email, class: 'mb-2 ml-1' %>
