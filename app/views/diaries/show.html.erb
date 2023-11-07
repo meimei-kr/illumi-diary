@@ -1,11 +1,11 @@
 <%= content_for(:title, t('.title')) %>
-<div class="flex flex-col grow bg-pale-beige items-center justify-center w-full h-full">
-  <div class="flex flex-row justify-center">
-    <h1 class="text-2xl mt-10 text-center inline tracking-wider"><%= t('.title') %></h1>
-    <%= image_tag 'diary.png', class: 'h-24 w-24 bg-cover' %>
+<div class="flex flex-col grow bg-pale-beige items-center justify-center w-full h-full px-4">
+  <div class="flex flex-row justify-center items-center sm:mt-10 mt-5">
+    <h1 class="sm:text-2xl text-lg text-center inline tracking-wider"><%= t('.title') %></h1>
+    <%= image_tag 'diary.png', class: 'sm:h-24 h-14 sm:w-24 h-14 bg-cover' %>
   </div>
 
-  <div class="container mx-auto mt-2 mb-24">
+  <div class="container mx-auto mt-2 sm:mb-24 mb-12">
     <div id="diary">
       <%= render @diary %>
     </div>
@@ -18,10 +18,10 @@
       </div>
     <% end %>
 
-    <div class="flex flex-row justify-end mt-24">
+    <div class="flex flex-row justify-end sm:mt-24 mt-12">
       <div>
-        <%= link_to t('link.to_diaries'), diaries_path, class: 'text-terracotta link link-hover' %>
-        <%= link_to t('link.to_my_diaries'), my_diaries_diaries_path, class: 'text-terracotta link link-hover ml-4' %>
+        <%= link_to t('link.to_diaries'), diaries_path, class: 'text-terracotta sm:text-base text-sm link md:link-hover' %>
+        <%= link_to t('link.to_my_diaries'), my_diaries_diaries_path, class: 'text-terracotta sm:text-base text-sm link md:link-hover ml-4' %>
       </div>
     </div>
   </div>

@@ -1,15 +1,15 @@
 <%= content_for(:title, t('.title')) %>
-<div class="flex flex-col grow bg-pale-beige items-center justify-center w-full h-[calc(100vh_-_64px)]">
-  <div class="flex flex-row justify-center">
-    <h1 class="text-2xl mt-10 text-center inline tracking-wider">日記作成完了！</h1>
-    <%= image_tag 'diary.png', class: 'h-24 object-cover' %>
+<div class="flex flex-col grow bg-pale-beige items-center justify-center w-full md:h-[calc(100vh_-_64px)] h-[calc(100vh_-_48px)] px-4">
+  <div class="flex flex-row justify-center items-center sm:mt-10 mt-5">
+    <h1 class="sm:text-2xl text-lg text-center inline tracking-wider">日記作成完了！</h1>
+    <%= image_tag 'diary.png', class: 'sm:h-24 h-14 sm:w-24 h-14 bg-cover' %>
   </div>
   <div class="flex flex-row justify-center my-4">
     <% medal = current_user.decorate.medal_to_give %>
     <% if medal.nil? %>
-      <p><%= @diary.decorate.random_message %></p>
+      <p class="md:text-base text-sm"><%= @diary.decorate.random_message %></p>
     <% else %>
-      <p>
+      <p class="md:text-base text-sm">
         すごすぎる！！！<%= current_user.decorate.medal_to_give %><br >
         ヘッダーにメダルが表示されているので、確認してみてね！
       </p>

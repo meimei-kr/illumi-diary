@@ -1,12 +1,12 @@
 <%= content_for(:title, t('.title')) %>
-<div class="flex flex-col grow bg-pale-beige w-full h-full justify-stretch">
-  <div class="flex flex-row justify-center">
-    <h1 class="text-2xl mt-10 text-center inline tracking-wider"><%= t('.title') %></h1>
-    <%= image_tag 'diary.png', class: 'h-24 w-24 bg-cover' %>
+<div class="flex flex-col grow bg-pale-beige w-full h-full justify-stretch px-4">
+  <div class="flex flex-row justify-center items-center sm:mt-10 mt-5">
+    <h1 class="sm:text-2xl text-lg text-center inline tracking-wider"><%= t('.title') %></h1>
+    <%= image_tag 'diary.png', class: 'sm:h-24 h-14 sm:w-24 h-14 bg-cover' %>
   </div>
 
-  <div class="container mx-auto mt-2 mb-24">
-    <div class="flex justify-end items-center my-6 mx-auto">
+  <div class="container mx-auto sm:mt-2 mt-0 mb-24">
+    <div class="flex sm:justify-end justify-center items-center sm:mb-6 mb-3 mx-auto">
       <div class="flex flex-row justify-center items-center p-2 primary-button rounded-full w-48">
         <%= link_to new_diary_path, class: 'h-full w-full flex justify-center items-center' do %>
           <span class="text-white">
