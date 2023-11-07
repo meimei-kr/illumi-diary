@@ -5,11 +5,11 @@
     <%= image_tag 'diary.png', class: 'sm:h-24 h-14 sm:w-24 h-14 bg-cover' %>
   </div>
 
-  <div class="container mx-auto mt-2 mb-24">
+  <div class="container mx-auto mt-2 sm:mb-24 mb-12">
     <%= render "form", diary: @diary %>
-    <div class="flex flex-row justify-end mt-24 w-full">
+    <div class="flex flex-row justify-end sm:mt-24 mt-12 w-full">
       <div>
-        <%= link_to t('link.show_diary'), @diary, class: "text-terracotta link link-hover" %>
+        <%= link_to t('link.show_diary'), @diary, class: "text-terracotta link md:link-hover" %>
       </div>
     </div>
   </div>

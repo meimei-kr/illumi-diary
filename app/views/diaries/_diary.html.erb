@@ -1,4 +1,4 @@
-<div id="<%= dom_id diary %>" class="md:px-8 px-6 md:py-8 py-6 flex flex-wrap md:flex-row flex-col bg-white rounded-lg mb-2">
+<div id="<%= dom_id diary %>" class="md:px-8 px-6 md:py-8 py-6 flex flex-wrap md:flex-nowrap md:flex-row flex-col bg-white rounded-lg mb-2">
 <div class="flex flex-row">
   <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
     <span class="md:text-sm text-xs pb-2 mb-2 border-b-2 border-gray-400/30"><%= diary.created_at.to_s[5,2] %></span>
@@ -61,12 +61,13 @@
     <div class="flex flex-row items-center">
       <% if current_user&.own?(diary) %>
         <div class="inline-block flex-1 flex flex-row items-center">
-          <%= link_to t('link.update'), edit_diary_path(diary), class: 'text-xs link link-hover text-terracotta h-full', data: { turbo: false } %>
+          <%= link_to t('link.update'), edit_diary_path(diary), class: 'text-xs link md:link-hover text-terracotta h-full', data: { turbo: false } %>
           <%= button_to t('link.delete'), diary_path(diary),
                         method: :delete,
                         data: { turbo: false },
-                        form: { class: 'text-xs link link-hover text-terracotta ml-2 h-full',
-                                onsubmit: "return check()" } %>
+                        form: { class: 'text-xs text-terracotta ml-2 h-full',
+                                onsubmit: "return check()" },
+                        class: 'link md:link-hover' %>
         </div>
       <% end %>
 
