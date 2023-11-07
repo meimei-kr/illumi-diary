@@ -1,6 +1,6 @@
 <%= content_for(:title, t('.title')) %>
 <div class="flex flex-col grow items-center justify-center w-full h-full bg-pale-beige">
-  <h1 class="sm:text-2xl text-xl mb-4 text-center"><%= t('.title') %></h1>
+  <h1 class="sm:text-2xl text-xl my-4 text-center"><%= t('.title') %></h1>
 
   <!-- アカウント情報エリア -->
   <div class="bg-white rounded-xl p-6 md:w-2/3 w-11/12 mt-4 mb-16">
@@ -66,7 +66,7 @@
 
   <!-- 退会エリア -->
   <% if current_user.is_member %>
-    <div class="flex flex-row justify-end items-center mb-16 w-2/3">
+    <div class="flex flex-row justify-end items-center mb-16 md:w-2/3 w-11/12">
       <p>退会する</p>
       <%= link_to t('.cancel_membership'), user_path(current_user), class: 'btn cancel-button ml-2', data: { turbo_method: :delete, turbo_confirm: '退会しますか？' } %>
     </div>
