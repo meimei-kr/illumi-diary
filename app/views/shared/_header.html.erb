@@ -6,18 +6,18 @@
       <% end %>
     </div>
 
-    <div class="flex items-center">
+    <div class="flex items-center max-w-[60%]">
       <% color = current_user.decorate.medal_color %>
       <% unless color.nil? %>
         <div class="flex-none">
           <i class="fa-solid fa-medal" style="color: <%= color %>"></i>
         </div>
       <% end %>
-      <div class="flex flex-1 ml-2.5 avatar items-center h-full">
-        <div class='md:w-10 w-8 md:h-10 h-8 md:my-0 my-1 flex justify-center items-center'>
+      <div class="flex flex-1 ml-2.5 avatar items-center h-full overflow-hidden">
+        <div class='flex-none md:w-10 w-8 md:h-10 h-8 md:my-0 my-1 flex justify-center items-center'>
           <%= image_tag current_user.avatar_image_url, class:'rounded-full' %>
         </div>
-        <p class="ml-1 leading-10 h-2/3 truncate max-w-xs md:text-sm text-xs"><%= current_user.name %></p>
+        <p class="ml-1 leading-10 h-2/3 truncate md:text-sm text-xs"><%= current_user.name %></p>
       </div>
 
       <div class="flex-none dropdown dropdown-end">
