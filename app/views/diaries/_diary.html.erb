@@ -61,11 +61,11 @@
     <div class="flex flex-row items-center">
       <% if current_user&.own?(diary) %>
         <div class="inline-block flex-1 flex flex-row items-center">
-          <%= link_to t('link.update'), edit_diary_path(diary), class: 'text-xs link md:link-hover text-terracotta h-full', data: { turbo: false } %>
+          <%= link_to t('link.update'), edit_diary_path(diary), class: 'sm:text-xs text-sm link md:link-hover text-terracotta h-full', data: { turbo: false } %>
           <%= button_to t('link.delete'), diary_path(diary),
                         method: :delete,
                         data: { turbo: false },
-                        form: { class: 'text-xs text-terracotta ml-2 h-full',
+                        form: { class: 'sm:text-xs text-sm text-terracotta ml-2 h-full',
                                 onsubmit: "return check()" },
                         class: 'link md:link-hover' %>
         </div>
