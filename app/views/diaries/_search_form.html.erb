@@ -2,9 +2,9 @@
   controller: 'flatpickr'
 } do |f| %>
     <div class="flex flex-row justify-center items-center mb-4">
-      <%= f.date_field :created_at_gteq, class: 'p-2 border rounded input input-bordered start_time', placeholder: '開始日' %>
+      <%= f.date_field :created_at_gteq, class: 'min-w-[20%] p-2 border rounded input input-bordered start_time', placeholder: '開始日' %>
       <span class="mx-1">〜</span>
-      <%= f.date_field :created_at_lteq_end_of_day, class: 'p-2 border rounded input input-bordered end_time', placeholder: '終了日' %>
+      <%= f.date_field :created_at_lteq_end_of_day, class: 'min-w-[20%] p-2 border rounded input input-bordered end_time', placeholder: '終了日' %>
       <%= f.submit class: 'ml-2 px-4 py-2 rounded-lg secondary-reverse-button btn cursor-pointer' %>
     </div>
 <% end %>
