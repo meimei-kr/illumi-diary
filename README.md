@@ -1,10 +1,24 @@
 # illumi-diary
+[![Image from Gyazo](https://i.gyazo.com/33aad68569755637c5c79b793f6510c3.png)](https://gyazo.com/33aad68569755637c5c79b793f6510c3)
+URL:https://illumi-diary.com/
 
 ## サービス概要
 1日の中であったポジティブな感情を記録し、幸福感を高める機会を作るサービスです。  
 楽しかったこと、嬉しかったこと、頑張ったことなど  
 ポジティブな出来事を1日の終わりに振り返ることで  
 小さな幸せを見つけられるようになります。
+
+## 主な機能
+| 日記投稿 | Clap(拍手) |
+|---------|-----------|
+|[![Image from Gyazo](https://i.gyazo.com/fda25f8dc0a244fc8343dba7aacf0285.gif)](https://gyazo.com/fda25f8dc0a244fc8343dba7aacf0285)|[![Image from Gyazo](https://i.gyazo.com/8e8d1d090f0bf716e2e1caba3846d1cb.gif)](https://gyazo.com/8e8d1d090f0bf716e2e1caba3846d1cb)|
+|今日あったいいことを3つ書き出します。  投稿は公開/非公開・コメント許可/非許可を選択できます。|いい1日だったね、と思った分だけClapボタンを押します。　　Maxまで押すと花のアイコンに変わります。|
+
+
+| 日記一覧 | My日記一覧 |
+|---------|-----------|
+|[![Image from Gyazo](https://i.gyazo.com/5fde1e0fa570b15bab850caecc137747.gif)](https://gyazo.com/5fde1e0fa570b15bab850caecc137747)|[![Image from Gyazo](https://i.gyazo.com/f50eef624ad5c0e4b697a19d750c264c.gif)](https://gyazo.com/f50eef624ad5c0e4b697a19d750c264c)|
+|公開設定した投稿は一覧から見ることができます。  他の人の投稿にも、Clapやコメントができます。|自分の投稿が一覧で見れます。  また、日付を絞って投稿を検索することも可能です。|
 
 ## 想定されるユーザー層
 ポジティブ思考を身に付けたい人。  
@@ -46,10 +60,24 @@ https://onl.sc/bRh5iBN
  - Clap機能(「いいね」の複数回できるバージョンのようなものです)
 
 ### 今後追加を検討している機能
- - Xシェア機能
  - ポジティブ変換出力機能
  - 選択肢から入力できる機能
  - 通知で記録を促す機能
+
+## 使用技術
+### フロントエンド
+- Hotwire(Turbo, Stimulus)
+- JavaScript
+- TailwindCSS
+- daisyUI
+### バックエンド
+- Ruby on Rails 7.0.8
+- Ruby 3.2.2
+### インフラ
+Heroku
+AWS S3
+### データベース
+PostgreSQL
 
 ### 画面遷移図
 https://www.figma.com/file/vnFmI6GyJesUINESwwIhaS/illumi-diary?type=design&node-id=0%3A1&mode=design&t=oU6hVh25i7wW8SYI-1
