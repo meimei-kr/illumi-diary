@@ -125,3 +125,9 @@ group :test do
 end
 
 gem "dartsass-rails", "~> 0.5.0"
+
+gem "dockerfile-rails", ">= 1.5", :group => :development
+
+gem "sentry-ruby", "~> 5.13"
+
+gem "sentry-rails", "~> 5.13"
