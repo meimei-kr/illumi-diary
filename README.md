@@ -1,6 +1,6 @@
 # illumi-diary
 [![Image from Gyazo](https://i.gyazo.com/33aad68569755637c5c79b793f6510c3.png)](https://gyazo.com/33aad68569755637c5c79b793f6510c3)
-URL:https://illumi-diary.com/
+URL: https://illumi-diary.com/
 
 ## サービス概要
 1日の中であったポジティブな感情を記録し、幸福感を高める機会を作るサービスです。  
@@ -11,7 +11,7 @@ URL:https://illumi-diary.com/
 ## 主な機能
 | 日記投稿 | Clap(拍手) |
 |---------|-----------|
-|[![Image from Gyazo](https://i.gyazo.com/fda25f8dc0a244fc8343dba7aacf0285.gif)](https://gyazo.com/fda25f8dc0a244fc8343dba7aacf0285)|[![Image from Gyazo](https://i.gyazo.com/8e8d1d090f0bf716e2e1caba3846d1cb.gif)](https://gyazo.com/8e8d1d090f0bf716e2e1caba3846d1cb)|
+|[![Image from Gyazo](https://i.gyazo.com/fda25f8dc0a244fc8343dba7aacf0285.gif)](https://gyazo.com/fda25f8dc0a244fc8343dba7aacf0285)|[![Image from Gyazo](https://i.gyazo.com/72813d195effc147b47be96a2acb0a5c.gif)](https://gyazo.com/72813d195effc147b47be96a2acb0a5c)|
 |今日あったいいことを3つ書き出します。  投稿は公開/非公開・コメント許可/非許可を選択できます。|いい1日だったね、と思った分だけClapボタンを押します。　　Maxまで押すと花のアイコンに変わります。|
 
 
@@ -74,10 +74,10 @@ https://onl.sc/bRh5iBN
 - Ruby on Rails 7.0.8
 - Ruby 3.2.2
 ### インフラ
-Heroku
-AWS S3
+- Heroku
+- AWS S3
 ### データベース
-PostgreSQL
+- PostgreSQL
 
 ### 画面遷移図
 https://www.figma.com/file/vnFmI6GyJesUINESwwIhaS/illumi-diary?type=design&node-id=0%3A1&mode=design&t=oU6hVh25i7wW8SYI-1
