@@ -124,6 +124,8 @@ GEM
     debug_inspector (1.1.0)
     deep_merge (1.2.2)
     diff-lcs (1.5.0)
+    dockerfile-rails (1.5.12)
+      rails (>= 3.0.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -423,6 +425,11 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sentry-rails (5.13.0)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.13.0)
+    sentry-ruby (5.13.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -490,6 +497,7 @@ DEPENDENCIES
   cssbundling-rails
   dartsass-rails (~> 0.5.0)
   debug
+  dockerfile-rails (>= 1.5)
   dotenv-rails
   draper
   factory_bot_rails
@@ -514,6 +522,8 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   selenium-webdriver
+  sentry-rails (~> 5.13)
+  sentry-ruby (~> 5.13)
   sorcery
   sprockets-rails
   stimulus-rails
