@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development? # http://localhost:3000/letter_opener でメールを見れるようになる
 
   root 'static_pages#top'
+  get 'terms', to: 'static_pages#terms'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
