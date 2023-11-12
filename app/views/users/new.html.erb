@@ -57,6 +57,11 @@
         </div>
       </div>
 
+      <div class="text-sm">
+        アカウントを作成することにより、<%= link_to '利用規約', terms_path, class: 'link md:link-hover text-terracotta mr-1' %>および
+        <%= link_to 'プライバシーポリシー', '#', class: 'link md:link-hover text-terracotta mr-1' %>に同意するものとします。
+      </div>
+
       <div class="flex flex-col">
         <%= form.submit t('helpers.submit.register'), class: "primary-button p-2 mt-10 rounded-full text-center w-full" %>
       </div>
