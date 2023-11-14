@@ -3,6 +3,8 @@
 class UserDecorator < ApplicationDecorator
   delegate_all
 
+  # ビューから呼ばれるメソッド
+  # このメソッドが呼ばれるときには会員ランク更新済みなので、controllerのcheck_win_medalメソッドのようにif文はつけない
   def medal_to_give
     case object.continuous_writing_days
     when Medal::BRONZE

@@ -41,8 +41,8 @@ class User < ApplicationRecord
     (Time.zone.today - 99..Time.zone.today).reverse_each do |date|
       start_of_day = date.beginning_of_day
       end_of_day = date.end_of_day
-      diaries_of_today = diaries.where(created_at: start_of_day..end_of_day)
-      break if diaries_of_today.blank?
+      diaries_until_today = diaries.where(created_at: start_of_day..end_of_day)
+      break if diaries_until_today.blank?
 
       days += 1
     end

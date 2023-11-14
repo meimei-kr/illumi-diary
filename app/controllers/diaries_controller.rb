@@ -95,14 +95,15 @@ class DiariesController < ApplicationController
   end
 
   # メダル付与対象の日記記入継続日数か判定して、該当すればユーザーのランクを更新
+  # すでにメダルを獲得済みの場合があるため、１つ下のランクから上がる時だけ実行されるようにif文を記載
   def check_win_medal
     case current_user.continuous_writing_days
     when Medal::BRONZE
-      current_user.bronze!
+      current_user.bronze! if current_user.general?
     when Medal::SILVER
-      current_user.silver!
+      current_user.silver! if current_user.bronze?
     when Medal::GOLD
-      current_user.gold!
+      current_user.gold! if current_user.silver?
     end
   end
 
