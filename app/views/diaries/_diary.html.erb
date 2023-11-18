@@ -1,13 +1,13 @@
 <div id="<%= dom_id diary %>" class="md:px-8 px-6 md:py-8 py-6 flex flex-wrap md:flex-nowrap md:flex-row flex-col bg-white rounded-lg mb-2">
 <div class="flex flex-row max-w-full">
-  <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
+  <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none mr-1">
     <span class="md:text-sm text-xs pb-2 mb-2 border-b-2 border-gray-400/30"><%= diary.created_at.to_s[5,2] %></span>
     <span class="font-medium md:text-xl text-lg title-font leading-none"><%= diary.created_at.to_s[8,2] %></span>
   </div>
   <div class="md:hidden flex flex-1 justify-end items-center mb-4 w-full overflow-hidden">
     <div class="flex justify-end items-center w-full">
       <%= image_tag diary.user.avatar_image.url, class: 'w-10 h-10 rounded-full flex-shrink-0 object-cover object-center border border-zinc-200' %>
-      <span class="flex-none flex flex-col sm:pl-3 pl-1 max-w-[50%]">
+      <span class="flex-1 flex flex-col sm:pl-3 pl-1 max-w-[50%]">
         <span class="title-font font-medium sm:text-base text-sm truncate"><%= diary.user.name %></span>
       </span>
       <% color = diary.user.decorate.medal_color %>
