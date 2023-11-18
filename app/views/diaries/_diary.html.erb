@@ -16,13 +16,13 @@
       <div class="flex flex-none justify-end items-center w-fit">
         <% color = diary.user.decorate.medal_color %>
         <% unless color.nil? %>
-          <div class="ml-3">
+          <div class="sm:ml-3 ml-1">
             <i class="fa-solid fa-medal fa-xl" style="color: <%= color %>"></i>
           </div>
         <% end %>
       </div>
 
-      <p class="flex-none text-xs border rounded-full px-2.5 py-1 ml-2 border-terracotta/70 text-gray-500 max-w-[56px]"><%= diary.allow_publication ? '公開' : '非公開' %></p>
+      <p class="flex-none text-xs border rounded-full sm:px-2.5 px-2 py-1 sm:ml-2 ml-1 border-terracotta/70 text-gray-500 max-w-[60px]"><%= diary.allow_publication ? '公開' : '非公開' %></p>
     </div>
   </div>
 
