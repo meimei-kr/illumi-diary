@@ -6,14 +6,14 @@
       <span class="font-medium md:text-xl text-lg title-font leading-none"><%= diary.created_at.to_s[8,2] %></span>
     </div>
     <!-- mdブレイクポイントより小さい場合のアバター表示 -->
+    <div class="md:hidden flex flex-none mr-1">
+      <%= image_tag diary.user.avatar_image.url, class: 'w-10 h-10 rounded-full flex-shrink-0 object-cover object-center border border-zinc-200' %>
+    </div>
     <div class="md:hidden flex flex-1 justify-end items-center mb-4 w-full overflow-hidden">
-      <div class="flex justify-end items-center w-full">
-        <div class="flex flex-1 justify-end">
-          <%= image_tag diary.user.avatar_image.url, class: 'w-10 h-10 rounded-full flex-shrink-0 object-cover object-center border border-zinc-200' %>
-        </div>
-        <div class="sm:pl-3 pl-1 title-font font-medium sm:text-base text-sm truncate max-w-[50%]">
-          <%= diary.user.name %>
-        </div>
+      <div class="sm:pl-3 pl-1 title-font font-medium sm:text-base text-sm truncate w-full">
+        <%= diary.user.name %>
+      </div>
+      <div class="flex flex-none justify-end items-center w-fit">
         <% color = diary.user.decorate.medal_color %>
         <% unless color.nil? %>
           <div class="ml-3">
