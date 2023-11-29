@@ -7,7 +7,7 @@ $(document).on("turbo:load", function() {
   function updateCount(textArea, textCount) {
     const count = textArea.val().length;
     const newCount = maxCount - count;
-    textCount.text(`${newCount} / ${maxCount}`)
+    textCount.text(`残り：${newCount}文字`)
     textCount.css("color", newCount < 0 ? "red" : "#666b74");
   }
 
