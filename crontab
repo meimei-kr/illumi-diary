@@ -1,0 +1,1 @@
+0 2 * * * bundle exec rake /rails/lib/tasks/delete_guests:delete_expired_guests

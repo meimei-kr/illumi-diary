@@ -1,53 +1,98 @@
-# Docker Hubからruby:3.2.2のイメージをプルする
-FROM ruby:3.2.2
+# syntax = docker/dockerfile:1
 
-# Rails環境を本番環境にする
-ENV RAILS_ENV=production
+# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
+ARG RUBY_VERSION=3.2.2
+FROM ruby:$RUBY_VERSION-slim as base
 
-# アプリのルートディレクトリ
-ENV APP_ROOT /illumi-diary
+LABEL fly_launch_runtime="rails"
 
-# 環境設定
-ENV LANG C.UTF-8
-ENV TZ Asia/Tokyo
+# Rails app lives here
+WORKDIR /rails
 
-# Node.jsをインストールするための設定スクリプトをダウンロード
-RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
-# Yarnの公開鍵をダウンロードし、APTの追加
-&& wget --quiet -O - /tmp/pubkey.gpg https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor -o /usr/share/keyrings/yarn-archive-keyring.gpg \
-# YarnのAPTリポジトリを追加
-&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/yarn-archive-keyring.gpg] https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list > /dev/null \
-# パッケージリストを更新
-&& apt-get update -qq \
-# ビルドツール、PostgreSQL開発ライブラリ、Node.js、Yarnをインストール
-&& apt-get install -y build-essential libpq-dev nodejs yarn cron imagemagick
+# Set production environment
+ENV RAILS_ENV="production" \
+    BUNDLE_WITHOUT="development:test" \
+    BUNDLE_DEPLOYMENT="1"
 
-# cronを起動
-RUN service cron start
+# Update gems and bundler
+RUN gem update --system --no-document && \
+    gem install -N bundler
 
-# ルートディレクトリを作成
-RUN mkdir ${APP_ROOT}
 
-# 作業ディレクトリを設定
-WORKDIR ${APP_ROOT}
+# Throw-away build stage to reduce size of final image
+FROM base as build
 
-# Bundlerをインストール
-RUN gem install bundler
+# Install packages needed to build gems and node modules
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential curl libpq-dev libvips node-gyp pkg-config python-is-python3
 
-# ホストのGemfile、Gemfile.lock、yarn.lockをコピー
-COPY Gemfile ${APP_ROOT}/Gemfile
-COPY Gemfile.lock ${APP_ROOT}/Gemfile.lock
-COPY yarn.lock ${APP_ROOT}/yarn.lock
+# Install JavaScript dependencies
+ARG NODE_VERSION=20.9.0
+ARG YARN_VERSION=1.22.19
+ENV PATH=/usr/local/node/bin:$PATH
+RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
+    /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
+    npm install -g yarn@$YARN_VERSION && \
+    rm -rf /tmp/node-build-master
 
-# GemfileとGemfile.lockに基づいてRubyの依存関係をインストール
-RUN bundle install
+# Install application gems
+COPY --link Gemfile Gemfile.lock ./
+RUN bundle install && \
+    bundle exec bootsnap precompile --gemfile && \
+    rm -rf ~/.bundle/ $BUNDLE_PATH/ruby/*/cache $BUNDLE_PATH/ruby/*/bundler/gems/*/.git
 
-# yarn.lockに基づいてNode.jsの依存関係をインストール
-RUN yarn install
+# Install node modules
+COPY --link .yarnrc package.json yarn.lock ./
+COPY --link .yarn/releases/* .yarn/releases/
+RUN yarn install --frozen-lockfile
 
-# ホストのアプリケーションのファイルをコピー
-COPY . ${APP_ROOT}
+# Copy application code
+COPY --link . .
 
-# docker-compose.ymlは複数コンテナを起動する用のcommandが書かれている
-# railsサーバー単体で立ち上げて作業したい場合に用いる
-CMD ["rails", "server", "-b", "0.0.0.0"]
+# Precompile bootsnap code for faster boot times
+RUN bundle exec bootsnap precompile app/ lib/
+
+# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
+
+
+# Final stage for app image
+FROM base
+
+# Install packages needed for deployment
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y curl imagemagick libvips postgresql-client && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# Latest releases available at https://github.com/aptible/supercronic/releases
+ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.2.29/supercronic-linux-amd64 \
+    SUPERCRONIC=supercronic-linux-amd64 \
+    SUPERCRONIC_SHA1SUM=cd48d45c4b10f3f0bfdd3a57d054cd05ac96812b
+
+RUN curl -fsSLO "$SUPERCRONIC_URL" \
+    && echo "${SUPERCRONIC_SHA1SUM}  ${SUPERCRONIC}" | sha1sum -c - \
+    && chmod +x "$SUPERCRONIC" \
+    && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
+    && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
+
+# You might need to change this depending on where your crontab is located
+COPY crontab crontab
+
+# Copy built artifacts: gems, application
+COPY --from=build /usr/local/bundle /usr/local/bundle
+COPY --from=build /rails /rails
+
+# Run and own only the runtime files as a non-root user for security
+RUN useradd rails --create-home --shell /bin/bash && \
+    chown -R rails:rails db log storage tmp
+USER rails:rails
+
+# Deployment options
+ENV RAILS_LOG_TO_STDOUT="1" \
+    RAILS_SERVE_STATIC_FILES="true"
+
+# Entrypoint sets up the container.
+ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+
+# Start the server by default, this can be overwritten at runtime
+EXPOSE 3000
